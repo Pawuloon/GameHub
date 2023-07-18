@@ -25,16 +25,19 @@ public class Pong extends JFrame implements KeyListener
         setLocationRelativeTo(null);
 
 
-        paddle1 = new Paddle(0, 0, 10, 100, 10);
-        paddle2 = new Paddle(790, 0, 10, 100, 10);
-        ball = new Ball(395, 295, 10, 10);
+        paddle1 = new Paddle(100, 0, 40, 100, 10);
+        paddle2 = new Paddle(700, 0, 40, 100, 10);
+        ball = new Ball(395, 295, 40, 40);
 
         setLayout(null);
         add(paddle1);
         add(paddle2);
         add(ball);
+        setFocusable(true);
+        start();
 
     }
+
 
     private void moveBall()
     {
@@ -42,7 +45,7 @@ public class Pong extends JFrame implements KeyListener
         {
             ball.reverseXVelocity();
         }
-        else if (ball.getY() <= 0 || ball.getY() >= getHeight() - ball.getHeight())
+        else if (ball.getY() < 0 || ball.getY() >= getHeight() - ball.getHeight())
         {
             ball.reverseYVelocity();
         }
@@ -53,10 +56,16 @@ public class Pong extends JFrame implements KeyListener
         }
         ball.setLocation(ball.getX() + ball.getxVelocity(), ball.getY() + ball.getyVelocity());
     }
+    private void start()
+    {
+        var timer = new Timer(10, e ->
+        {
+            moveBall();
+            repaint();
+        });
+        timer.start();
 
-
-
-
+    }
     @Override
     public void keyPressed(KeyEvent e)
     {
