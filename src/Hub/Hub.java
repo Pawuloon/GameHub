@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class Hub extends JFrame
 {
+    // TODO Add login method
     public Hub()
     {
         setName("Game Hub");
@@ -16,6 +17,8 @@ public class Hub extends JFrame
 
         var panel = new JPanel();
         panel.setPreferredSize(new Dimension(100, 100));
+
+        // Placeholder for now, change into switching pictures later
         panel.setBackground(Color.RED);
         add(panel, BorderLayout.NORTH);
 
