@@ -1,6 +1,8 @@
 package PingPong;
 
-public class Ball
+import java.awt.*;
+
+public class Ball extends Rectangle
 {
 
 }

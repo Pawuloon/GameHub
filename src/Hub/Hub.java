@@ -1,5 +1,7 @@
 package Hub;
 
+import PingPong.Pong;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,8 +22,16 @@ public class Hub extends JFrame
 
         var buttonPanel = new JPanel();
         buttonPanel.setPreferredSize(new Dimension(100, 100));
+
         var button = new JButton("Ping Pong");
         button.setPreferredSize(new Dimension(100, 60));
+        button.addActionListener(e ->
+        {
+            var pong = new Pong();
+            pong.setVisible(true);
+            dispose();
+        });
+
         buttonPanel.add(button);
         add(buttonPanel, BorderLayout.CENTER);
 
