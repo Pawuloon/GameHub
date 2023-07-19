@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class Paddle extends JPanel
 {
-    private int speed;
+    private final int speed;
 
     public Paddle(int x, int y, int width, int height, int speed)
     {
         setBounds(x, y, width, height);
-        setBackground(Color.BLACK);
+        setBackground(Color.WHITE);
         this.speed = speed;
     }
 

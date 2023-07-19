@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class Ball extends JPanel
 {
-    public int xVelocity;
-    public int yVelocity;
+   private int xVelocity;
+   private int yVelocity;
 
 
     public Ball(int x, int y, int width, int height)
@@ -20,6 +20,7 @@ public class Ball extends JPanel
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        setBackground(Color.BLACK);
         g.setColor(
                 new Color(generateRandomColor(), generateRandomColor(), generateRandomColor()));
         g.fillOval(0, 0, getWidth(), getHeight());
@@ -39,21 +40,21 @@ public class Ball extends JPanel
 
     public void reverseXVelocity()
     {
-        xVelocity = -xVelocity;
+        xVelocity = -xVelocity - ((int )(Math.random() * 2));
     }
 
     public void reverseYVelocity()
     {
-        yVelocity = -yVelocity;
+        yVelocity = -yVelocity - ((int )(Math.random() * 2));
     }
 
     public int getxVelocity()
     {
-        return xVelocity;
+        return xVelocity + ((int )(Math.random() * 2));
     }
 
     public int getyVelocity() {
-        return yVelocity;
+        return yVelocity + ((int )(Math.random() * 2));
     }
 
 

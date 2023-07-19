@@ -10,9 +10,10 @@ public class Hub extends JFrame
     // TODO Add login method
     public Hub()
     {
-        setName("Game Hub");
+        setTitle("Game Hub");
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
+        setBackground(Color.BLACK);
 
 
         var panel = new JPanel();
@@ -26,6 +27,7 @@ public class Hub extends JFrame
         var buttonPanel = new JPanel();
         buttonPanel.setPreferredSize(new Dimension(100, 100));
 
+        // Pong game button
         var button = new JButton("Ping Pong");
         button.setPreferredSize(new Dimension(100, 60));
         button.addActionListener(e ->
@@ -39,9 +41,17 @@ public class Hub extends JFrame
         add(buttonPanel, BorderLayout.CENTER);
 
 
+        var button2 = new JButton("Tic Tac Toe");
+        button2.setPreferredSize(new Dimension(100, 100));
+        button2.addActionListener(e ->
+        {
+            // TODO Add Tic Tac Toe
+        });
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         pack();
         setLocationRelativeTo(null);
+
     }
 }
