@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 public class Pong extends JFrame implements KeyListener
 {
-    // TODO Add Changing functioning menu
+    // TODO Add Changing functioning menu for ai and 2 player
 
     private final Paddle paddle1;
     private final Paddle paddle2;
@@ -56,14 +56,14 @@ public class Pong extends JFrame implements KeyListener
         }
         else if (ball.getX() <= 0)
         {
-            // TODO Add score
+
             ball.setLocation(395, 295);
             score.setValue2(score.getValue2() + 1);
             score.repaint();
         }
         else if (ball.getX() >= getWidth() - ball.getWidth())
         {
-            // TODO Add score
+
             ball.setLocation(395, 295);
             score.setValue(score.getValue() + 1);
             score.repaint();
