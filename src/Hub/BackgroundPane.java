@@ -6,12 +6,15 @@ import java.util.List;
 
 public class BackgroundPane extends JPanel
 {
-    private List<Image> images;
+//    TODO Fix this class
+    private final List<Image> images;
     private int index = 0;
 
     public BackgroundPane(List<Image> images)
     {
         this.images = images;
+        setVisible(true);
+
     }
 
     public void nextImage()

@@ -4,6 +4,7 @@ import PingPong.Pong;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Hub extends JFrame
 {
@@ -19,9 +20,21 @@ public class Hub extends JFrame
         var panel = new JPanel();
         panel.setPreferredSize(new Dimension(100, 100));
 
+        var images = new ArrayList<Image>();
+        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235113.png").getImage());
+        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235143.png").getImage());
+        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235232.png").getImage());
+        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235310.png").getImage());
+
+        var backgroundPanel = new BackgroundPane(images);
+        backgroundPanel.setPreferredSize(new Dimension(800, 600));
+
+        getContentPane().add(backgroundPanel, BorderLayout.CENTER);
+
+        var timer = new Timer(1000, e -> backgroundPanel.nextImage());
+        timer.start();
         // Placeholder for now, change into switching pictures later
-        panel.setBackground(Color.RED);
-        add(panel, BorderLayout.NORTH);
+
 
 
         var buttonPanel = new JPanel();
