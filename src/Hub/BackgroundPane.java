@@ -6,28 +6,31 @@ import java.util.List;
 
 public class BackgroundPane extends JPanel
 {
-//    TODO Fix this class
     private final List<Image> images;
-    private int index = 0;
+    private int index;
 
-    public BackgroundPane(List<Image> images)
+    public BackgroundPane()
     {
-        this.images = images;
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(400, 300));
+        this.images = List.of(
+                new ImageIcon("src\\Graphics\\img.png").getImage(),
+                new ImageIcon("src\\Graphics\\img_1.png").getImage(),
+                new ImageIcon("src\\Graphics\\img_2.png").getImage(),
+                new ImageIcon("src\\Graphics\\img_3.png").getImage()
+        );
+        index = 0;
+        var timer = new Timer(8000, e ->
+        {
+            index++;
+            if (index == images.size())
+                index = 0;
+            repaint();
+        });
+        timer.start();
         setVisible(true);
 
     }
-
-    public void nextImage()
-    {
-        index++;
-        if (index >= images.size())
-        {
-            index = 0;
-        }
-        repaint();
-    }
-
-
     @Override
     protected void paintComponent(Graphics g)
     {

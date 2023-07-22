@@ -16,33 +16,20 @@ public class Hub extends JFrame
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
 
-
+        // Main panel
         var panel = new JPanel();
         panel.setPreferredSize(new Dimension(100, 100));
 
-        var images = new ArrayList<Image>();
-        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235113.png").getImage());
-        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235143.png").getImage());
-        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235232.png").getImage());
-        images.add(new ImageIcon("src\\Graphics\\Screenshot 2023-04-01 235310.png").getImage());
+        // Background
+        var backgroundPanel = new BackgroundPane();
 
-        var backgroundPanel = new BackgroundPane(images);
-        backgroundPanel.setPreferredSize(new Dimension(800, 600));
-
-        getContentPane().add(backgroundPanel, BorderLayout.CENTER);
-
-        var timer = new Timer(1000, e -> backgroundPanel.nextImage());
-        timer.start();
-        // Placeholder for now, change into switching pictures later
-
-
-
+        // Buttons
         var buttonPanel = new JPanel();
         buttonPanel.setPreferredSize(new Dimension(100, 100));
 
         // Pong game button
         var button = new JButton("Ping Pong");
-        button.setPreferredSize(new Dimension(100, 60));
+        button.setPreferredSize(new Dimension(100, 90));
         button.addActionListener(e ->
         {
             var pong = new Pong();
@@ -50,17 +37,21 @@ public class Hub extends JFrame
             dispose();
         });
 
-        buttonPanel.add(button);
-        add(buttonPanel, BorderLayout.CENTER);
 
 
+        // Tic Tac Toe game button
         var button2 = new JButton("Tic Tac Toe");
-        button2.setPreferredSize(new Dimension(100, 100));
+        button2.setPreferredSize(new Dimension(100, 90));
         button2.addActionListener(e ->
         {
             // TODO Add Tic Tac Toe
         });
 
+        buttonPanel.add(button);
+        buttonPanel.add(button2);
+
+        add(backgroundPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         pack();
