@@ -38,14 +38,25 @@ public class Ball extends JPanel
     }
 
 
-    public void reverseXVelocity()
+    public int reverseXVelocity()
     {
-        xVelocity = -xVelocity - ((int )(Math.random() * 2));
+        xVelocity = -(xVelocity + ((int )(Math.random() * 1)));
+        return xVelocity;
     }
 
-    public void reverseYVelocity()
+    public int reverseYVelocity()
     {
-        yVelocity = -yVelocity - ((int )(Math.random() * 2));
+        yVelocity = -(yVelocity + ((int )(Math.random() * 1)));
+        return yVelocity;
+    }
+
+
+    public void setxVelocity(int xVelocity) {
+        this.xVelocity = xVelocity;
+    }
+
+    public void setyVelocity(int yVelocity) {
+        this.yVelocity = yVelocity;
     }
 
     public int getxVelocity()

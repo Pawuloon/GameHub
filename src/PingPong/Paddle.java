@@ -20,4 +20,6 @@ public class Paddle extends JPanel
     {
         return speed;
     }
+
+
 }

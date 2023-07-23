@@ -48,11 +48,11 @@ public class Pong extends JFrame implements KeyListener
     {
         if (ball.isColliding(paddle1) || ball.isColliding(paddle2))
         {
-            ball.reverseXVelocity();
+            ball.setxVelocity(ball.reverseXVelocity());
         }
-        else if (ball.getY() <= 0 || ball.getY() >= getHeight() - ball.getHeight())
+        else if (ball.getY() < 0 || ball.getY() > getHeight() - ball.getHeight())
         {
-            ball.reverseYVelocity();
+            ball.setyVelocity(ball.reverseYVelocity());
         }
         else if (ball.getX() <= 0)
         {
@@ -63,13 +63,13 @@ public class Pong extends JFrame implements KeyListener
         }
         else if (ball.getX() >= getWidth() - ball.getWidth())
         {
-
             ball.setLocation(395, 295);
             score.setValue(score.getValue() + 1);
             score.repaint();
         }
 
         ball.setLocation(ball.getX() + ball.getxVelocity(), ball.getY() + ball.getyVelocity());
+
     }
     private void start()
     {
