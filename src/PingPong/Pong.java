@@ -2,6 +2,7 @@ package PingPong;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,7 +22,7 @@ public class Pong extends JFrame implements KeyListener
         getContentPane().setBackground(Color.BLACK);
         setResizable(false);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         addKeyListener(this);
         pack();
         setLocationRelativeTo(null);

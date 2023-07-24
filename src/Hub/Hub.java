@@ -1,6 +1,7 @@
 package Hub;
 
 import PingPong.Pong;
+import TicTac.Tic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,6 +65,8 @@ public class Hub extends JFrame
         button2.addActionListener(e ->
         {
             // TODO Add Tic Tac Toe
+            var tic = new Tic();
+            tic.setVisible(true);
             dispose();
         });
 
