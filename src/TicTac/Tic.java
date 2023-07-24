@@ -5,8 +5,6 @@ import java.awt.*;
 
 public class Tic extends JFrame
 {
-    public static int player = 1;
-
 
     public Tic()
     {
