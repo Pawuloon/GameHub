@@ -22,7 +22,7 @@ public class Tic extends JFrame
                     null, "How many fields do you want to have ?");
             if (ask == null)
                 System.exit(-1);
-            else if (ask.matches("[9-]+"))
+            else if (ask.matches("[3-9]+"))
                 break;
             else
                 JOptionPane.showMessageDialog(null, "Invalid input");

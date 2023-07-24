@@ -1,8 +1,7 @@
 package TicTac;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class Field extends JButton
 {
@@ -10,20 +9,11 @@ public class Field extends JButton
     private int playerNum;
     public Field(int playerNum)
     {
+        setPreferredSize(new Dimension(10,10));
+        setFont(new Font("Arial", Font.PLAIN, 40));
+        setFocusable(false);
         this.playerNum = playerNum;
-
-        if(this.playerNum == 1)
-        {
-            setText("X");
-        }
-        else if (this.playerNum == 2)
-        {
-            setText("O");
-        }
-        else
-        {
-            setText("");
-        }
+        setText("");
 
         addActionListener(e ->
         {
@@ -32,12 +22,10 @@ public class Field extends JButton
                if (this.playerNum == 1)
                {
                    setText("X");
-                   this.playerNum = 2;
                }
-               else
+               else if (this.playerNum == 2)
                {
                    setText("O");
-                   this.playerNum = 1;
                }
            }
            else
@@ -48,11 +36,13 @@ public class Field extends JButton
         });
     }
 
-    public int getPlayerNum() {
+    public int getPlayerNum()
+    {
         return playerNum;
     }
 
-    public void setPlayerNum(int playerNum) {
+    public void setPlayerNum(int playerNum)
+    {
         this.playerNum = playerNum;
     }
 }
