@@ -27,6 +27,7 @@ public class Tic extends JFrame
             else
                 JOptionPane.showMessageDialog(null, "Invalid input");
         }while(true);
+
         // Tic tac panel
         var panel = new GamePanel(Integer.parseInt(ask));
 

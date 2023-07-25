@@ -1,5 +1,6 @@
 package Hub;
 
+import Blocks.BlockGame.GameFrame;
 import PingPong.Pong;
 import TicTac.Tic;
 
@@ -64,7 +65,6 @@ public class Hub extends JFrame
         button2.setPreferredSize(new Dimension(100, 90));
         button2.addActionListener(e ->
         {
-            // TODO Add Tic Tac Toe
             var tic = new Tic();
             tic.setVisible(true);
             dispose();
@@ -88,10 +88,21 @@ public class Hub extends JFrame
             dispose();
         });
 
+
+        var button5 = new JButton("Block Game");
+        button5.setPreferredSize(new Dimension(100, 90));
+        button5.addActionListener(e ->
+        {
+            var block = new GameFrame();
+            block.setVisible(true);
+            dispose();
+        });
+
         buttonPanel.add(button);
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
+        buttonPanel.add(button5);
 
         add(backgroundPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);

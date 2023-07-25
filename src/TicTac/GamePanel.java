@@ -34,7 +34,6 @@ public class GamePanel extends JPanel
         {
             for (var field : fields)
             {
-
                 if (field.getText().equals("X"))
                 {
                     field.setForeground(Color.RED);
@@ -56,7 +55,6 @@ public class GamePanel extends JPanel
                 {
                     field.setPlayerNum(1);
                 }
-
             }
         });
         timer.start();
