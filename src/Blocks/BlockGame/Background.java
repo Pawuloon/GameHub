@@ -12,6 +12,7 @@ public class Background extends JPanel
         setLayout(new BorderLayout());
         images = new Image[]
         {
+                new ImageIcon("src\\Blocks\\BlockGame\\images\\img.png").getImage(),
                 new ImageIcon("src\\Blocks\\BlockGame\\images\\img_1.png").getImage(),
                 new ImageIcon("src\\Blocks\\BlockGame\\images\\img_2.png").getImage(),
                 new ImageIcon("src\\Blocks\\BlockGame\\images\\img_3.png").getImage(),
