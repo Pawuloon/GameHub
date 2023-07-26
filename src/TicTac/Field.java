@@ -4,18 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 
 public class Field extends JButton
 {
 
-    private int playerNum;
+
     public Field(int playerNum)
     {
         setPreferredSize(new Dimension(10,10));
         setFont(new Font("Arial", Font.PLAIN, 40));
         setFocusable(false);
-        this.playerNum = playerNum;
         setText("");
 
         addMouseListener(new MouseAdapter()
@@ -39,9 +38,4 @@ public class Field extends JButton
         });
     }
 
-
-    public void setPlayerNum(int playerNum)
-    {
-        this.playerNum = playerNum;
-    }
 }
