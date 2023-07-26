@@ -28,8 +28,7 @@ public class GamePanel extends JPanel
         {
             add(field);
         }
-        final int[] currentPlayer = {1};
-        // TODO Fix the loop so it won't behave like this
+
         var timer = new Timer(10, e->
         {
             for (var field : fields)
@@ -46,10 +45,10 @@ public class GamePanel extends JPanel
                 {
                     field.setForeground(Color.BLACK);
                 }
-                field.setPlayerNum(currentPlayer[0]);
             }
-            // TODO Fix this
-            currentPlayer[0] = (currentPlayer[0] == 1) ? 2 : 1;
+
+
+
         });
         timer.start();
 

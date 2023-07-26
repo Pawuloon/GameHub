@@ -1,0 +1,36 @@
+A) Tic Tac Toe
+    Select number of fields 3x3, 4x4, 5x5 etc.
+    Decide between yourself who will be X and who will be O.
+    Players take turns placing their symbols in empty cells.
+    First player is X and second player is O.
+    Win by forming three symbols in a line horizontally, vertically, or diagonally.
+    Tie if all cells are filled without a winning line.
+
+
+
+B) Snake
+    Use arrow keys to move the snake.
+    Eat the food to grow.
+    Don't hit the walls or yourself.
+    Press space to pause the game.
+    Press enter to restart the game.
+
+
+
+C) Flappy Bird
+    Use space to fly.
+    Don't hit the pipes.
+    Press space to pause the game.
+    Press enter to restart the game.
+
+
+D) Ping-Pong
+    Select one player or two players.
+    Use arrow keys to move the paddle, for two players second player uses W and S.
+
+
+E) Blocks popper
+    Select difficulty level.
+    Use mouse to pop blocks.
+    You win when you reach certain score.
+

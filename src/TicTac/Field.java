@@ -2,6 +2,9 @@ package TicTac;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Field extends JButton
 {
@@ -15,31 +18,27 @@ public class Field extends JButton
         this.playerNum = playerNum;
         setText("");
 
-        addActionListener(e ->
+        addMouseListener(new MouseAdapter()
         {
-           if (getText().equals(""))
-           {
-               if (this.playerNum == 1)
-               {
-                   setText("X");
-               }
-               else if (this.playerNum == 2)
-               {
-                   setText("O");
-               }
-           }
-           else
-           {
-               JOptionPane.showMessageDialog(null, "Invalid move");
-           }
-
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                if (e.getButton() == MouseEvent.BUTTON1)
+                {
+                    setText("X");
+                }
+                else if (e.getButton() == MouseEvent.BUTTON3)
+                {
+                    setText("O");
+                }
+                else if (e.getButton() == MouseEvent.BUTTON2)
+                {
+                    setText("");
+                }
+            }
         });
     }
 
-    public int getPlayerNum()
-    {
-        return playerNum;
-    }
 
     public void setPlayerNum(int playerNum)
     {

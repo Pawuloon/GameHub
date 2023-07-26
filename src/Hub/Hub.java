@@ -98,11 +98,22 @@ public class Hub extends JFrame
             dispose();
         });
 
+        var button6 = new JButton("Instructions");
+        button6.setPreferredSize(new Dimension(100, 90));
+        button6.addActionListener(e ->
+        {
+            var instructions = new Instruction();
+            instructions.setVisible(true);
+            dispose();
+        });
+
+
         buttonPanel.add(button);
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
         buttonPanel.add(button5);
+        buttonPanel.add(button6);
 
         add(backgroundPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
