@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class Flap extends JFrame
 {
+    // TODO Finish this
     public Flap()
     {
         setTitle("FlappyBird");

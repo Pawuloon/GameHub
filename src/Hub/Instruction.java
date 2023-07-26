@@ -59,7 +59,9 @@ public class Instruction extends JFrame
                 stringBuilder.append(line).append("\n");
             }
             return stringBuilder.toString();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         return null;

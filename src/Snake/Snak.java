@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class Snak extends JFrame
 {
+    // TODO Finish this
     public Snak()
     {
         setTitle("Snake");
