@@ -16,11 +16,14 @@ public class Instruction extends JFrame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         pack();
+        setLocationRelativeTo(null);
 
         // Instruction panel content
         var mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(800, 600));
         mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(Color.BLACK);
+        mainPanel.setOpaque(true);
 
         var content = readFile();
 
@@ -28,9 +31,22 @@ public class Instruction extends JFrame
         label.setFont(new Font("Arial", Font.BOLD, 40));
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
+        label.setForeground(Color.RED);
+
+
+        // Text area
+        var textArea = new JTextArea(content);
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Arial", Font.BOLD, 20));
+        textArea.setForeground(Color.WHITE);
+        textArea.setBackground(Color.BLACK);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setOpaque(true);
+        textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Scroll pane
-        var scroll = new JScrollPane(new JTextArea(content));
+        var scroll = new JScrollPane(textArea);
 
         scroll.setPreferredSize(new Dimension(800, 600));
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -38,9 +54,22 @@ public class Instruction extends JFrame
         scroll.getVerticalScrollBar().setUnitIncrement(16);
         scroll.setBorder(BorderFactory.createEmptyBorder());
 
+
+        // Back button
+        var back = new JButton("Back");
+        back.setPreferredSize(new Dimension(100, 100));
+        back.addActionListener(e ->
+        {
+            var hub = new Hub();
+            hub.setVisible(true);
+            dispose();
+        });
+
+
         // Adding components
         mainPanel.add(label, BorderLayout.NORTH);
         mainPanel.add(scroll, BorderLayout.CENTER);
+        mainPanel.add(back, BorderLayout.SOUTH);
         add(mainPanel, BorderLayout.CENTER);
     }
 

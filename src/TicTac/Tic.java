@@ -2,6 +2,7 @@ package TicTac;
 
 import javax.swing.*;
 import java.awt.*;
+import Hub.Hub;
 
 public class Tic extends JFrame
 {
@@ -15,6 +16,7 @@ public class Tic extends JFrame
         setVisible(true);
 
 
+        // Ask for number of fields
         String ask;
         do
         {
@@ -36,7 +38,7 @@ public class Tic extends JFrame
         back.setPreferredSize(new Dimension(100, 100));
         back.addActionListener(e ->
         {
-            var hub = new Hub.Hub();
+            var hub = new Hub();
             hub.setVisible(true);
             dispose();
         });

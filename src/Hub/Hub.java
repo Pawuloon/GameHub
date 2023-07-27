@@ -11,6 +11,8 @@ import java.awt.*;
 public class Hub extends JFrame
 {
     // TODO Add login method
+
+
     public Hub()
     {
         setTitle("Game Hub");
@@ -18,23 +20,21 @@ public class Hub extends JFrame
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
 
+
         // TODO Change it later into a proper login, from db
         // Login window
-        var username = JOptionPane.showInputDialog(getParent(),"Enter username");
-        var password = JOptionPane.showInputDialog(getParent(),"Enter password");
-        if (username == null || password == null)
-        {
+
+        var username = JOptionPane.showInputDialog(getParent(), "Enter username");
+        var password = JOptionPane.showInputDialog(getParent(), "Enter password");
+        if (username == null || password == null) {
             System.exit(0);
-        }
-        else if (username.equals("admin") && password.equals("admin"))
-        {
+        } else if (username.equals("admin") && password.equals("admin")) {
             JOptionPane.showMessageDialog(null, "Welcome " + username);
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid username or password");
             System.exit(0);
         }
+
 
         // Main panel
         var panel = new JPanel();
@@ -123,4 +123,6 @@ public class Hub extends JFrame
         setLocationRelativeTo(null);
 
     }
+
+
 }

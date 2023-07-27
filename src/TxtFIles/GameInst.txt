@@ -26,7 +26,8 @@ C) Flappy Bird
 
 D) Ping-Pong
     Select one player or two players.
-    Use arrow keys to move the paddle, for two players second player uses W and S.
+    Use arrow keys to move the paddle,
+    for two players second player uses W and S.
 
 
 E) Blocks popper
