@@ -2,7 +2,6 @@ package PingPong;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,6 +14,9 @@ public class Pong extends JFrame implements KeyListener
     private final Ball ball;
 
     private final Score score;
+
+
+    private final String endScoreSet;
     public Pong()
     {
         setTitle("Pong");
@@ -27,6 +29,40 @@ public class Pong extends JFrame implements KeyListener
         pack();
         setLocationRelativeTo(null);
 
+        // End score
+        endScoreSet = JOptionPane.showInputDialog(null, "Enter the score to win");
+
+        if (endScoreSet.matches("[1-9]+"))
+        {
+            var endScore = Integer.parseInt(endScoreSet);
+            if (endScore > 0 && endScore < 100)
+            {
+                JOptionPane.showMessageDialog(null, "The score to win is " + endScore);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Invalid input");
+                System.exit(0);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Invalid input");
+            System.exit(0);
+        }
+
+        // Restart button
+        JButton restart = new JButton("Restart");
+        restart.setPreferredSize(new Dimension(100, 100));
+        restart.addActionListener(e ->
+        {
+            var pong = new Pong();
+            pong.setVisible(true);
+            dispose();
+        });
+
+
+
         paddle1 = new Paddle(10, 0, 40, 100, 30);
         paddle2 = new Paddle(735, 0, 40, 100, 30);
         ball = new Ball(395, 295, 40, 40);
@@ -37,6 +73,7 @@ public class Pong extends JFrame implements KeyListener
         add(paddle2);
         add(ball);
         add(score);
+        add(restart);
         setFocusable(true);
 
         start();
@@ -58,13 +95,13 @@ public class Pong extends JFrame implements KeyListener
         else if (ball.getX() <= 0)
         {
 
-            ball.setLocation(395, 295);
+            randomSpeed();
             score.setValue2(score.getValue2() + 1);
             score.repaint();
         }
         else if (ball.getX() >= getWidth() - ball.getWidth())
         {
-            ball.setLocation(395, 295);
+            randomSpeed();
             score.setValue(score.getValue() + 1);
             score.repaint();
         }
@@ -74,12 +111,34 @@ public class Pong extends JFrame implements KeyListener
     }
     private void start()
     {
+        randomSpeed();
         var timer = new Timer(10, e ->
         {
             moveBall();
             repaint();
+            if (score.getValue() == Integer.parseInt(endScoreSet) || score.getValue2() == Integer.parseInt(endScoreSet))
+            {
+                var winner = score.getValue() == Integer.parseInt(endScoreSet) ? "Player 1" : "Player 2";
+                JOptionPane.showMessageDialog(null, winner + " won");
+                System.exit(0);
+            }
         });
         timer.start();
+    }
+
+
+    public void randomSpeed()
+    {
+        var x = ball.getX();
+        var y = ball.getY();
+
+        x = getWidth() / 2 - ball.getWidth() / 2;
+        y = getHeight() / 2 - ball.getHeight() / 2;
+
+        ball.setLocation(x, y);
+
+        ball.setxVelocity(ball.getxVelocity());
+        ball.setyVelocity(ball.getyVelocity());
     }
     @Override
     public void keyPressed(KeyEvent e)

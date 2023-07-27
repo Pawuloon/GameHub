@@ -12,8 +12,8 @@ public class Ball extends JPanel
     public Ball(int x, int y, int width, int height)
     {
         setBounds(x, y, width, height);
-        xVelocity = 2;
-        yVelocity = 2;
+        xVelocity = 4;
+        yVelocity = 4;
     }
 
     @Override
@@ -49,6 +49,8 @@ public class Ball extends JPanel
         yVelocity = -(yVelocity + ((int )(Math.random() * 1)));
         return yVelocity;
     }
+
+
 
 
     public void setxVelocity(int xVelocity) {
