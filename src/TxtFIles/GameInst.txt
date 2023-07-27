@@ -28,6 +28,7 @@ D) Ping-Pong
     Select one player or two players.
     Use arrow keys to move the paddle,
     for two players second player uses W and S.
+    If you want to restart the game click on the play screen.
 
 
 E) Blocks popper

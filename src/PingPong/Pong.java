@@ -51,16 +51,27 @@ public class Pong extends JFrame implements KeyListener
             System.exit(0);
         }
 
+        // Restart Panel
+        var resetPanel = new JPanel();
+        resetPanel.setPreferredSize(new Dimension(100, 100));
+        resetPanel.setBackground(Color.BLACK);
+        resetPanel.setLayout(new BorderLayout());
+        resetPanel.setOpaque(true);
+        resetPanel.setVisible(true);
+
         // Restart button
-        JButton restart = new JButton("Restart");
+        JButton restart = new JButton();
         restart.setPreferredSize(new Dimension(100, 100));
+        restart.setBackground(Color.BLACK);
+
         restart.addActionListener(e ->
         {
+            dispose();
             var pong = new Pong();
             pong.setVisible(true);
             dispose();
         });
-
+        resetPanel.add(restart, BorderLayout.CENTER);
 
 
         paddle1 = new Paddle(10, 0, 40, 100, 30);
@@ -68,12 +79,11 @@ public class Pong extends JFrame implements KeyListener
         ball = new Ball(395, 295, 40, 40);
         score = new Score(0,0);
 
-        setLayout(null);
         add(paddle1);
         add(paddle2);
         add(ball);
         add(score);
-        add(restart);
+        add(resetPanel);
         setFocusable(true);
 
         start();
