@@ -11,8 +11,16 @@ public class Snak extends JFrame
         setTitle("Snake");
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setVisible(true);
         pack();
+        setLocationRelativeTo(null);
+
+        var panel = new SnakePanel();
+
+        add(panel, BorderLayout.CENTER);
+
+
     }
 }
