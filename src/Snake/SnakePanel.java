@@ -20,7 +20,6 @@ public class SnakePanel extends JPanel
         graphics.fillRect(Snak.getFruit().x, Snak.getFruit().y, 20, 20);
 
         // Snake
-
         graphics.setColor(Color.RED);
         for (var point : Snak.getSnake())
              graphics.fillRect(point.x, point.y, 20, 20);

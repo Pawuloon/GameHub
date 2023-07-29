@@ -143,13 +143,14 @@ public class Snak extends JFrame
     private Point generateFruit()
     {
         var rand = new Random();
-        return new Point(rand.nextInt(800 / 20, 600 / 20), 0);
+        return new Point(rand.nextInt(getWidth() / 20) * 20,
+                         rand.nextInt(getHeight() / 20) * 20);
     }
 
 
     private void gameLoop()
     {
-        var timer = new Timer(0, e ->
+        var timer = new Timer(100, e ->
         {
             if (!isRunning)
                 return;

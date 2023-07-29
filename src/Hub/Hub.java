@@ -2,6 +2,7 @@ package Hub;
 
 import Blocks.BlockGame.GameFrame;
 import PingPong.Pong;
+import Snake.Snak;
 import TicTac.Tic;
 
 import javax.swing.*;
@@ -76,6 +77,8 @@ public class Hub extends JFrame
         button3.addActionListener(e ->
         {
             // TODO Add Snake
+            var snake = new Snak();
+            snake.setVisible(true);
             dispose();
         });
 
