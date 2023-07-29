@@ -2,25 +2,29 @@ package Snake;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class SnakePanel extends JPanel
 {
+    private ArrayList<Point> snake;
+    private Point fruit;
 
-    public SnakePanel()
+    private void draw(Graphics graphics)
     {
-        setPreferredSize(new Dimension(800, 600));
-        setLayout(new BorderLayout());
-        setFocusable(true);
-        requestFocus();
+        // Background
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0, 0, getWidth(), getHeight());
+
+        // Snake
+        graphics.setColor(Color.RED);
 
 
     }
-
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 800, 600);
     }
+
+
 }
