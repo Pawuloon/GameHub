@@ -21,15 +21,20 @@ public class SnakePanel extends JPanel
 
         // Snake
 
+        graphics.setColor(Color.RED);
         for (var point : Snak.getSnake())
-        {
-            graphics.setColor(randomColor());
-            graphics.fillRect(point.x, point.y, 20, 20);
-        }
+             graphics.fillRect(point.x, point.y, 20, 20);
 
+        if (!Snak.isRunning())
+        {
+            graphics.setColor(Color.WHITE);
+            graphics.setFont(new Font("Arial", Font.BOLD, 50));
+            graphics.drawString("Game Over", 300, 300);
+        }
     }
 
 
+    // Generate random color
     private Color randomColor()
     {
         var random = new Random();

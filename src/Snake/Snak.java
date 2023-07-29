@@ -15,7 +15,7 @@ public class Snak extends JFrame
 
     private static Point fruit;
     private int direction;
-    private boolean isRunning;
+    private static boolean isRunning;
 
     // TODO Finish this
     public Snak()
@@ -171,12 +171,7 @@ public class Snak extends JFrame
         return fruit;
     }
 
-    public int getDirection()
-    {
-        return direction;
-    }
-
-    public boolean isRunning()
+    public static boolean isRunning()
     {
         return isRunning;
     }
