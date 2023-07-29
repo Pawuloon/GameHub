@@ -5,12 +5,15 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Snak extends JFrame
 {
 
 
+    private ArrayList<Point> snake;
 
+    private Point fruit;
     private int direction;
     private boolean isRunning;
 
@@ -30,13 +33,41 @@ public class Snak extends JFrame
 
         // Adding components
         add(panel, BorderLayout.CENTER);
+
+        snake = new ArrayList<>();
+        snake.add(new Point(400, 300));
+        fruit = generateFruit();
+        direction = 1;
+        isRunning = true;
         addKeyListener(new KeyListener()
         {
 
             @Override
             public void keyPressed(KeyEvent e)
             {
-
+                switch (e.getKeyCode())
+                {
+                    case KeyEvent.VK_UP ->
+                    {
+                        if (direction != 2)
+                            direction = 0;
+                    }
+                    case KeyEvent.VK_DOWN ->
+                    {
+                        if (direction != 0)
+                            direction = 2;
+                    }
+                    case KeyEvent.VK_LEFT ->
+                    {
+                        if (direction != 1)
+                            direction = 3;
+                    }
+                    case KeyEvent.VK_RIGHT ->
+                    {
+                        if (direction != 3)
+                            direction = 1;
+                    }
+                }
             }
             @Override
             public void keyTyped(KeyEvent e)
@@ -55,10 +86,57 @@ public class Snak extends JFrame
     }
 
 
+    // Move snake
+    private void move()
+    {
+        var head = snake.get(0);
+        Point newHead;
+
+        switch (direction)
+        {
+            case 0 -> newHead = new Point(head.x, head.y - 20);
+            case 1 -> newHead = new Point(head.x + 20, head.y);
+            case 2 -> newHead = new Point(head.x, head.y + 20);
+            case 3 -> newHead = new Point(head.x - 20, head.y);
+            default ->
+            {
+            return;
+            }
+        }
+        snake.add(0, newHead);
+        if (newHead != fruit)
+        {
+            snake.remove(snake.size() - 1);
+        }
+    }
+
+    // Generate fruit
+    private Point generateFruit()
+    {
+        var rand = new Random();
+        return new Point(rand.nextInt(800 / 20, 600 / 20), 0);
+    }
 
 
     private void gameLoop()
     {
 
+    }
+
+
+    public ArrayList<Point> getSnake() {
+        return snake;
+    }
+
+    public Point getFruit() {
+        return fruit;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }
