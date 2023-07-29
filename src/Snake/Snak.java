@@ -17,7 +17,6 @@ public class Snak extends JFrame
     private int direction;
     private static boolean isRunning;
 
-    // TODO Finish this
     public Snak()
     {
         setTitle("Snake");
@@ -80,10 +79,9 @@ public class Snak extends JFrame
 
             }
 
-
-
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(KeyEvent e)
+            {
 
             }
         });
@@ -155,7 +153,7 @@ public class Snak extends JFrame
 
     private void gameLoop()
     {
-        var timer = new Timer(100, e ->
+        var timer = new Timer(60, e ->
         {
             if (!isRunning)
                 return;
