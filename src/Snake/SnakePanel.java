@@ -26,6 +26,7 @@ public class SnakePanel extends JPanel
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        draw(g);
     }
 
 

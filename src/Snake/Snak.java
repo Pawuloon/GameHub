@@ -39,6 +39,11 @@ public class Snak extends JFrame
         fruit = generateFruit();
         direction = 1;
         isRunning = true;
+
+        // Game loop
+        gameLoop();
+
+        // Key listener
         addKeyListener(new KeyListener()
         {
 
@@ -82,6 +87,7 @@ public class Snak extends JFrame
 
             }
         });
+        setFocusable(true);
 
     }
 
@@ -104,10 +110,33 @@ public class Snak extends JFrame
             }
         }
         snake.add(0, newHead);
+
         if (newHead != fruit)
-        {
             snake.remove(snake.size() - 1);
+        else
+            fruit = generateFruit();
+
+    }
+
+    // Check for collision
+    private void collision()
+    {
+        var head = snake.get(0);
+        if (head.x < 0 || head.x > getWidth() || head.y < 0 || head.y > getHeight())
+        {
+            isRunning = false;
+            return;
         }
+
+        for (int i = 1; i < snake.size() ; i++)
+        {
+            if (head.equals(snake.get(i)))
+            {
+                isRunning = false;
+                return;
+            }
+        }
+
     }
 
     // Generate fruit
@@ -120,7 +149,15 @@ public class Snak extends JFrame
 
     private void gameLoop()
     {
-
+        var timer = new Timer(0, e ->
+        {
+            if (!isRunning)
+                return;
+            move();
+            collision();
+            repaint();
+        });
+        timer.start();
     }
 
 
