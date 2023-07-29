@@ -109,13 +109,18 @@ public class Snak extends JFrame
             return;
             }
         }
-        snake.add(0, newHead);
 
-        if (newHead != fruit)
-            snake.remove(snake.size() - 1);
-        else
+
+        if (newHead.equals(fruit))
+        {
+            snake.add(0, newHead);
             fruit = generateFruit();
-
+        }
+        else
+        {
+            snake.add(0, newHead);
+            snake.remove(snake.size() - 1);
+        }
     }
 
     // Check for collision

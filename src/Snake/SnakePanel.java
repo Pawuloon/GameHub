@@ -16,7 +16,7 @@ public class SnakePanel extends JPanel
         graphics.fillRect(0, 0, 800, 600);
 
         // Fruit
-        graphics.setColor(randomColor());
+        graphics.setColor(Color.GREEN);
         graphics.fillRect(Snak.getFruit().x, Snak.getFruit().y, 20, 20);
 
         // Snake
