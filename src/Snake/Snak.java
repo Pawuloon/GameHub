@@ -11,9 +11,9 @@ public class Snak extends JFrame
 {
 
 
-    private ArrayList<Point> snake;
+    private static ArrayList<Point> snake;
 
-    private Point fruit;
+    private static Point fruit;
     private int direction;
     private boolean isRunning;
 
@@ -161,19 +161,23 @@ public class Snak extends JFrame
     }
 
 
-    public ArrayList<Point> getSnake() {
+    public static ArrayList<Point> getSnake()
+    {
         return snake;
     }
 
-    public Point getFruit() {
+    public static Point getFruit()
+    {
         return fruit;
     }
 
-    public int getDirection() {
+    public int getDirection()
+    {
         return direction;
     }
 
-    public boolean isRunning() {
+    public boolean isRunning()
+    {
         return isRunning;
     }
 }
