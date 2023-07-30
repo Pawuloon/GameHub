@@ -10,7 +10,7 @@ public class Field extends JButton
 {
 
 
-    public Field(int playerNum)
+    public Field()
     {
         setPreferredSize(new Dimension(10,10));
         setFont(new Font("Arial", Font.PLAIN, 40));
@@ -32,7 +32,7 @@ public class Field extends JButton
                 }
                 else if (e.getButton() == MouseEvent.BUTTON2)
                 {
-                    setText("");
+                    setText(" ");
                 }
             }
         });

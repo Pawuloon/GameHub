@@ -153,7 +153,7 @@ public class Snak extends JFrame
 
     private void gameLoop()
     {
-        var timer = new Timer(60, e ->
+        var timer = new Timer(100, e ->
         {
             if (!isRunning)
                 return;
