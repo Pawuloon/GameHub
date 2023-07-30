@@ -82,6 +82,7 @@ public class GamePanel extends JPanel
     }
 
 
+    // TODO Fix this method
     private String checkWinner(ArrayList<ArrayList<Field>> lastFis)
     {
         // Rows
