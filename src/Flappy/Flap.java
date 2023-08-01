@@ -12,6 +12,7 @@ public class Flap extends JFrame
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBackground(Color.BLACK);
 
         pack();
     }

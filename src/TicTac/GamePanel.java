@@ -3,6 +3,7 @@ package TicTac;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GamePanel extends JPanel
 {
@@ -39,7 +40,7 @@ public class GamePanel extends JPanel
         {
             var winner = checkWinner(lastFis);
 
-            assert winner != null;
+
             switch (winner)
             {
                 case "X" -> {
@@ -50,17 +51,18 @@ public class GamePanel extends JPanel
                     JOptionPane.showMessageDialog(null, "O won");
                     System.exit(0);
                 }
-                case " " -> {
+                case null -> {
                     JOptionPane.showMessageDialog(null, "Draw");
                     System.exit(0);
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + winner);
             }
         });
         timer.start();
     }
 
 
-    // TODO Fix this method
+
     private String checkWinner(ArrayList<ArrayList<Field>> lastFis)
     {
         // Rows
@@ -86,6 +88,15 @@ public class GamePanel extends JPanel
                 && lastFis.get(1).get(1).getText().equals(lastFis.get(2).get(0).getText()))
             return lastFis.get(0).get(2).getText();
 
+        // Draw
+        for (int i = 0; i < size ; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                if (lastFis.get(i).get(j).getText().equals(" "))
+                    return null;
+            }
+        }
         return null;
     }
 }

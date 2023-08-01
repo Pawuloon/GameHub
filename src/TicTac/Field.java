@@ -17,7 +17,8 @@ public class Field extends JButton
         setFocusable(false);
         setText("");
 
-        addMouseListener(new MouseAdapter()
+        addMouseListener(
+                new MouseAdapter()
         {
             @Override
             public void mouseClicked(MouseEvent e)

@@ -11,9 +11,6 @@ import java.awt.*;
 
 public class Hub extends JFrame
 {
-    // TODO Add login method
-
-
     public Hub()
     {
         setTitle("Game Hub");
@@ -76,7 +73,6 @@ public class Hub extends JFrame
         button3.setPreferredSize(new Dimension(100, 90));
         button3.addActionListener(e ->
         {
-            // TODO Add Snake
             var snake = new Snak();
             snake.setVisible(true);
             dispose();
