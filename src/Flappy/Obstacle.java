@@ -5,8 +5,8 @@ public class Obstacle
     // TODO Finish this
 
     private int x;
-    private int y;
-    private int width;
+    private final int y;
+    private final int width;
     private int height;
 
     private int gap;
