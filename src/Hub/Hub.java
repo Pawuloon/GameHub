@@ -1,6 +1,7 @@
 package Hub;
 
 import Blocks.BlockGame.GameFrame;
+import Flappy.Flap;
 import PingPong.Pong;
 import Snake.Snak;
 import TicTac.Tic;
@@ -83,7 +84,8 @@ public class Hub extends JFrame
         button4.setPreferredSize(new Dimension(100, 90));
         button4.addActionListener(e ->
         {
-            // TODO Add Flappy Bird
+            var flappy = new Flap();
+            flappy.setVisible(true);
             dispose();
         });
 
