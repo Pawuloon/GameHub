@@ -18,48 +18,26 @@ public class GamePanel extends JPanel
         setBackground(Color.BLACK);
         setVisible(true);
 
-        var fields = new ArrayList<Field>();
         var lastFis = new ArrayList<ArrayList<Field>>();
 
         // Fields
-        for (int i = 0; i < size * size; i++)
-        {
-            fields.add(new Field());
-        }
-        for (var field : fields)
-        {
-            add(field);
-        }
         for (int i = 0; i < size ; i++)
         {
             lastFis.add(new ArrayList<>());
             for (int j = 0; j < size; j++)
             {
-                lastFis.get(i).add(new Field());
+                var field = new Field();
+                lastFis.get(i).add(field);
+                add(field);
             }
         }
 
 
 
         // Timer
-        var timer = new Timer(10, e->
+        var timer = new Timer(0, e->
         {
             var winner = checkWinner(lastFis);
-            for (var field : fields)
-            {
-                if (field.getText().equals("X"))
-                {
-                    field.setForeground(Color.RED);
-                }
-                else if (field.getText().equals("O"))
-                {
-                    field.setForeground(Color.BLUE);
-                }
-                else
-                {
-                    field.setForeground(Color.BLACK);
-                }
-            }
 
             assert winner != null;
             switch (winner)

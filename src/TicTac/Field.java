@@ -25,10 +25,12 @@ public class Field extends JButton
                 if (e.getButton() == MouseEvent.BUTTON1)
                 {
                     setText("X");
+                    setForeground(Color.RED);
                 }
                 else if (e.getButton() == MouseEvent.BUTTON3)
                 {
                     setText("O");
+                    setForeground(Color.BLUE);
                 }
                 else if (e.getButton() == MouseEvent.BUTTON2)
                 {
