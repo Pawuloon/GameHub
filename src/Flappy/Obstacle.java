@@ -22,7 +22,7 @@ public class Obstacle
     {
         x -= 5;
 
-        if (x < -width)
+        if (x + width < 0)
         {
             x = 800;
             height = (int) (Math.random() * 400 + 120);

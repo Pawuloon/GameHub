@@ -14,10 +14,11 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
 
     private final Timer loop;
 
+    // TODO FIX COLLISION DETECTION
 
     public FlapFrame()
     {
-        // TODO Finish this
+
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,8 +30,8 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
 
         addKeyListener(this);
         // Initialization
-        bird = new Bird(200, 300);
-        obstacle = new Obstacle(800, 300);
+        bird = new Bird(20, 10);
+        obstacle = new Obstacle(300, 10);
         score = 0;
 
 
@@ -49,7 +50,9 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
             gameOver();
 
         if (!obstacle.pass(bird))
-             score++;
+        {
+            score++;
+        }
 
         if (bird.outOfBounds())
             gameOver();

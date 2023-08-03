@@ -29,9 +29,8 @@ public class Bird
     public boolean collision(Obstacle o)
     {
         if (x + size > o.getX() && x < o.getX() + o.getWidth())
-        {
-            return y < o.getY() || y + size > o.getY() + o.getHeight();
-        }
+            return y + size > o.getY() || y < o.getY() + o.getHeight();
+
         return false;
     }
 
