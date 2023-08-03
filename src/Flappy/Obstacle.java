@@ -9,9 +9,6 @@ public class Obstacle
     private final int width;
     private int height;
 
-    private int gap;
-
-    private int speed;
 
     public Obstacle(int x, int y)
     {
@@ -23,7 +20,7 @@ public class Obstacle
 
     public void update()
     {
-        x -= speed;
+        x -= 5;
 
         if (x < -width)
         {

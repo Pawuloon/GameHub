@@ -3,11 +3,10 @@ package Flappy;
 public class Bird
 {
     // TODO Finish this
-    private int x;
+    private final int x;
     private int y;
     private int speed;
     private final int size = 30;
-    private int gravity;
 
     public Bird(int x, int y)
     {
@@ -23,7 +22,7 @@ public class Bird
 
     public void fall()
     {
-        speed += gravity;
+        speed += 1;
         y += speed;
     }
 
@@ -50,7 +49,8 @@ public class Bird
         return y;
     }
 
-    public int getSize() {
+    public int getSize()
+    {
         return size;
     }
 }
