@@ -32,7 +32,7 @@ public class Obstacle
         }
     }
 
-    public boolean collision(Bird b)
+    public boolean pass(Bird b)
     {
         if (b.getX() + b.getSize() > x && b.getX() < x + width)
         {

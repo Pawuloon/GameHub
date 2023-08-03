@@ -6,7 +6,7 @@ public class Bird
     private int x;
     private int y;
     private int speed;
-    private int size;
+    private final int size = 30;
     private int gravity;
 
     public Bird(int x, int y)
@@ -34,6 +34,11 @@ public class Bird
             return y < o.getY() || y + size > o.getY() + o.getHeight();
         }
         return false;
+    }
+
+    public boolean outOfBounds()
+    {
+        return y >= 600 - size;
     }
 
 
