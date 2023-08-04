@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class LoginFrame extends JFrame
 {
+    // TODO Finnish login frame
     public LoginFrame()
     {
         setPreferredSize(new Dimension(800, 600));
