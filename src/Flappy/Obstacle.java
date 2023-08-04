@@ -1,6 +1,8 @@
 package Flappy;
 
-public class Obstacle
+import java.awt.*;
+
+public class Obstacle extends Rectangle
 {
     // TODO Finish this
 
@@ -15,7 +17,7 @@ public class Obstacle
         this.x = x;
         this.y = y;
         this.width = 50;
-        this.height = (int) (Math.random() * 400 + 120);
+        this.height = (int) (Math.random() * 400 + 200);
     }
 
     public void update()
@@ -25,32 +27,32 @@ public class Obstacle
         if (x + width < 0)
         {
             x = 800;
-            height = (int) (Math.random() * 400 + 120);
+            height = (int) (Math.random() * 400 + 200);
         }
     }
 
     public boolean pass(Bird b)
     {
-        if (b.getX() + b.getSize() > x && b.getX() < x + width)
+        if (b.getX() + b.getS() > x && b.getX() < x + width)
         {
-            return b.getY() < y || b.getY() + b.getSize() > y + height;
+            return b.getY() < y || b.getY() + b.getS() > y + height;
         }
         return false;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 }

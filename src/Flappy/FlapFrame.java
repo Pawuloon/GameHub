@@ -36,7 +36,7 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
 
 
         // Game loop
-        loop = new Timer(20,this);
+        loop = new Timer(15,this);
         loop.start();
     }
 
@@ -61,7 +61,7 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
     private void gameOver()
     {
         loop.stop();
-        JOptionPane.showMessageDialog(this, "Game Over! Score: " + score);
+        JOptionPane.showMessageDialog(this, "Game Over! Score: " + (score / 10));
 
         var ans = JOptionPane.showConfirmDialog(this, "Play again?");
         if (ans == JOptionPane.YES_OPTION)
@@ -86,18 +86,17 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
 
         // Bird
         g.setColor(Color.RED);
-        g.fillRect(bird.getX(), bird.getY(), bird.getSize(), bird.getSize());
+        double birdDrawX = bird.getX() - bird.getS() / 2;
+        double birdDrawY = bird.getY() - bird.getS() / 2;
+        g.fillRect((int) birdDrawX, (int) birdDrawY, (int) bird.getS(), (int) bird.getS());
 
         // Obstacle
         g.setColor(Color.BLUE);
-        g.fillRect(obstacle.getX(), obstacle.getY(), obstacle.getWidth(), obstacle.getHeight());
-
-        // Score
-        g.setColor(Color.BLACK);
-        g.drawString("Score: " + score, 10, 10);
+        g.fillRect((int) obstacle.getX(), (int) obstacle.getY(),(int) obstacle.getWidth(),(int) obstacle.getHeight());
 
         Toolkit.getDefaultToolkit().sync();
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e)

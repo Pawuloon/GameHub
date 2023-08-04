@@ -1,12 +1,14 @@
 package Flappy;
 
-public class Bird
+import java.awt.*;
+
+public class Bird extends Rectangle
 {
     // TODO Finish this
     private final int x;
     private int y;
     private int speed;
-    private final int size = 30;
+    private final int size = 20;
 
     public Bird(int x, int y)
     {
@@ -17,7 +19,7 @@ public class Bird
 
     public void move()
     {
-        speed = -20;
+        speed = -15;
     }
 
     public void fall()
@@ -36,19 +38,20 @@ public class Bird
 
     public boolean outOfBounds()
     {
-        return y >= 600 - size;
+        return y >= 600 - size || y <= 0;
     }
 
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getSize()
+
+    public double getS()
     {
         return size;
     }
