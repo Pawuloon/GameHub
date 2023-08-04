@@ -3,9 +3,9 @@ package Login;
 import javax.swing.*;
 import java.awt.*;
 
-public class Login extends JFrame
+public class LoginFrame extends JFrame
 {
-    public Login()
+    public LoginFrame()
     {
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
@@ -16,17 +16,14 @@ public class Login extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
+        var field1 = new JTextField("Username");
+        var field2 = new JTextField("Password");
+
         var button = new JButton("Login");
-        var button2 = new JButton("Register");
-
+        // Change into Db stuff
+        button.setEnabled(field1.getText().equals("Username") && field2.getText().equals("Password"));
         button.addActionListener(e -> {
-            var frame = new LoginFrame();
-            frame.setVisible(true);
-            dispose();
+
         });
-
-        add(button);
-        add(button2);
     }
-
 }
