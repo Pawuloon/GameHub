@@ -12,10 +12,10 @@ public class Background extends JPanel
         setLayout(new BorderLayout());
         images = new Image[]
         {
-                new ImageIcon("src\\Blocks\\BlockGame\\images\\img.png").getImage(),
-                new ImageIcon("src\\Blocks\\BlockGame\\images\\img_1.png").getImage(),
-                new ImageIcon("src\\Blocks\\BlockGame\\images\\img_2.png").getImage(),
-                new ImageIcon("src\\Blocks\\BlockGame\\images\\img_3.png").getImage(),
+                new ImageIcon("src\\FallingBlockGame\\images\\img.png").getImage(),
+                new ImageIcon("src\\FallingBlockGame\\images\\img_1.png").getImage(),
+                new ImageIcon("src\\FallingBlockGame\\images\\img_2.png").getImage(),
+                new ImageIcon("src\\FallingBlockGame\\images\\img_3.png").getImage(),
         };
         setPreferredSize(new Dimension(800, 600));
         ind = 0;

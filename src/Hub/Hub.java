@@ -1,6 +1,6 @@
 package Hub;
 
-import Blocks.BlockGame.GameFrame;
+import FallingBlockGame.GameFrame;
 import FlappyReversed.FlapFrame;
 import PingPong.Pong;
 import Snake.Snak;
