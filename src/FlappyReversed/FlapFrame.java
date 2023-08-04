@@ -1,4 +1,4 @@
-package Flappy;
+package FlappyReversed;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,8 +13,6 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
     private int score;
 
     private final Timer loop;
-
-    // TODO FIX COLLISION DETECTION
 
     public FlapFrame()
     {
@@ -45,6 +43,9 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
     {
         bird.fall();
         obstacle.update();
+
+        if (bird.getY() <= 0 || bird.getY() >= 600 - bird.getS())
+            gameOver();
 
         if (bird.collision(obstacle))
             gameOver();

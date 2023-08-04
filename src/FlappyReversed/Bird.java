@@ -1,4 +1,4 @@
-package Flappy;
+package FlappyReversed;
 
 import java.awt.*;
 
@@ -17,25 +17,29 @@ public class Bird extends Rectangle
         speed = 0;
     }
 
+    // Jumping speed
     public void move()
     {
         speed = -15;
     }
 
+    // Update for game state for bird
     public void fall()
     {
         speed += 1;
         y += speed;
     }
 
+    // Collision detection
     public boolean collision(Obstacle o)
     {
-        if (x + size > o.getX() && x < o.getX() + o.getWidth())
-            return y + size > o.getY() || y < o.getY() + o.getHeight();
+        if (getX() + getS() > o.getX() && getX() < o.getX() + o.getWidth())
+            return getY() < o.getY() || getY() + getS() > o.getY() + o.getHeight();
 
         return false;
     }
 
+    // Out of bounds check
     public boolean outOfBounds()
     {
         return y >= 600 - size || y <= 0;

@@ -1,11 +1,9 @@
-package Flappy;
+package FlappyReversed;
 
 import java.awt.*;
 
 public class Obstacle extends Rectangle
 {
-    // TODO Finish this
-
     private int x;
     private final int y;
     private final int width;
@@ -20,6 +18,7 @@ public class Obstacle extends Rectangle
         this.height = (int) (Math.random() * 400 + 200);
     }
 
+    // Update for game state
     public void update()
     {
         x -= 5;
@@ -31,6 +30,7 @@ public class Obstacle extends Rectangle
         }
     }
 
+    // Collision detection
     public boolean pass(Bird b)
     {
         if (b.getX() + b.getS() > x && b.getX() < x + width)

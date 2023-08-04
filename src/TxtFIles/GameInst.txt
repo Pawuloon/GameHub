@@ -17,9 +17,10 @@ B) Snake
 
 
 
-C) Flappy Bird
+C) Flappy Refersed Bird
     Use space to fly.
-    Don't hit the pipes.
+    Hit the obstacles.
+    Go straight through them.
     Press space to pause the game.
     Press enter to restart the game.
 
