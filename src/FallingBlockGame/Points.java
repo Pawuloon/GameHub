@@ -1,4 +1,4 @@
-package Blocks.BlockGame;
+package FallingBlockGame;
 
 import javax.swing.*;
 import java.awt.*;
