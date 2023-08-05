@@ -11,23 +11,38 @@ public class Login extends JFrame
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+
         setBackground(Color.BLACK);
         pack();
+
         setLocationRelativeTo(null);
         setFocusable(true);
 
         var button = new JButton("Login");
+        button.setSize(100, 100);
         var button2 = new JButton("Register");
+        button2.setSize(100, 100);
 
-        button.addActionListener(e -> {
+        // Login Frame
+        button.addActionListener(e ->
+        {
             var frame = new LoginFrame();
             frame.setVisible(true);
             dispose();
         });
 
-        add(button);
-        add(button2);
+        // Register Frame
+        button2.addActionListener(e ->
+        {
+            var frame = new RegisterFrame();
+            frame.setVisible(true);
+            dispose();
+        });
+
+        // Add buttons to frame
+        add(button, BorderLayout.NORTH);
+        add(new JTextArea("PLACEHOLDER"), BorderLayout.CENTER);
+        add(button2, BorderLayout.SOUTH);
     }
 
 }

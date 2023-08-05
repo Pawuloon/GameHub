@@ -1,4 +1,6 @@
-import Hub.Hub;
+
+import Login.Login;
+
 
 import javax.swing.*;
 
@@ -6,7 +8,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(Hub::new);
+        SwingUtilities.invokeLater(Login::new);
 
     }
 }

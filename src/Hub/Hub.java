@@ -2,6 +2,7 @@ package Hub;
 
 import FallingBlockGame.GameFrame;
 import FlappyReversed.FlapFrame;
+import Login.Login;
 import PingPong.Pong;
 import Snake.Snak;
 import TicTac.Tic;
@@ -18,22 +19,6 @@ public class Hub extends JFrame
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
-
-
-        // TODO Change it later into a proper login, from db
-        // Login window
-
-        var username = JOptionPane.showInputDialog(getParent(), "Enter username");
-        var password = JOptionPane.showInputDialog(getParent(), "Enter password");
-        if (username == null || password == null) {
-            System.exit(0);
-        } else if (username.equals("admin") && password.equals("admin")) {
-            JOptionPane.showMessageDialog(null, "Welcome " + username);
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password");
-            System.exit(0);
-        }
-
 
         // Main panel
         var panel = new JPanel();
@@ -123,6 +108,20 @@ public class Hub extends JFrame
         pack();
         setLocationRelativeTo(null);
 
+    }
+
+    private void primitiveLogin()
+    {
+        var username = JOptionPane.showInputDialog(getParent(), "Enter username");
+        var password = JOptionPane.showInputDialog(getParent(), "Enter password");
+        if (username == null || password == null) {
+            System.exit(0);
+        } else if (username.equals("admin") && password.equals("admin")) {
+            JOptionPane.showMessageDialog(null, "Welcome " + username);
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password");
+            System.exit(0);
+        }
     }
 
 

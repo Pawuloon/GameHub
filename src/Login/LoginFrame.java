@@ -2,6 +2,7 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import Hub.Hub;
 
 public class LoginFrame extends JFrame
 {
@@ -11,9 +12,10 @@ public class LoginFrame extends JFrame
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
         setBackground(Color.BLACK);
         pack();
+
+        setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setFocusable(true);
 
@@ -23,8 +25,17 @@ public class LoginFrame extends JFrame
         var button = new JButton("Login");
         // Change into Db stuff
         button.setEnabled(field1.getText().equals("Username") && field2.getText().equals("Password"));
-        button.addActionListener(e -> {
-
+        button.addActionListener(e ->
+        {
+            JOptionPane.showMessageDialog(null, "Login successful !!!!");
+            var hub = new Hub();
+            hub.setVisible(true);
+            dispose();
         });
+
+        add(field1, BorderLayout.NORTH);
+        add(field2, BorderLayout.CENTER);
+        add(button, BorderLayout.SOUTH);
+
     }
 }
