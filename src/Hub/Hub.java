@@ -2,7 +2,7 @@ package Hub;
 
 import FallingBlockGame.GameFrame;
 import FlappyReversed.FlapFrame;
-import Login.Login;
+
 import PingPong.Pong;
 import Snake.Snak;
 import TicTac.Tic;
@@ -110,6 +110,7 @@ public class Hub extends JFrame
 
     }
 
+    // For test purposes only
     private void primitiveLogin()
     {
         var username = JOptionPane.showInputDialog(getParent(), "Enter username");

@@ -1,6 +1,7 @@
 package Login;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class RegisterFrame extends JFrame
@@ -11,8 +12,8 @@ public class RegisterFrame extends JFrame
         setPreferredSize(new java.awt.Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new java.awt.BorderLayout());
-        setBackground(java.awt.Color.BLACK);
+        setLayout(new BorderLayout());
+        setBackground(Color.BLACK);
         pack();
         setLocationRelativeTo(null);
         setFocusable(true);
@@ -30,8 +31,8 @@ public class RegisterFrame extends JFrame
         });
 
         // Add buttons to frame
-        add(field1);
-        add(field2);
-        add(button);
+        add(field1, BorderLayout.NORTH);
+        add(field2, BorderLayout.CENTER);
+        add(button, BorderLayout.SOUTH);
     }
 }
