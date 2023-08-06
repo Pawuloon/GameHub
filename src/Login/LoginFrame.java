@@ -39,14 +39,14 @@ public class LoginFrame extends JFrame
 
         button.addActionListener(e ->
         {
-            if (field1.getText().equals("ad") || field2.getText().equals("ad"))
+            if (userCheck(field1.getText(), field2.getText()))
             {
                 JOptionPane.showMessageDialog(null, "Login successful !!!!");
                 var hub = new Hub();
                 hub.setVisible(true);
                 dispose();
             }
-            else if (!userCheck(field1.getText(), field2.getText()))
+            else
             {
                 JOptionPane.showMessageDialog(null, "Wrong username or password");
             }
@@ -55,9 +55,58 @@ public class LoginFrame extends JFrame
         return button;
     }
 
+
+
+    // Insert admin into database
+    private void adminInsert()
+    {
+        var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
+        tableCreator();
+        try(var conn = DriverManager.getConnection(url))
+        {
+            var sql = "INSERT INTO PUBLIC.PLATFORM(USERNAME, PASSWORD) VALUES(?, ?)";
+            try (var stmt = conn.prepareStatement(sql))
+            {
+                stmt.setString(1, "ad");
+                stmt.setString(2, "ad");
+                stmt.execute();
+                System.out.println("Admin inserted");
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    // Creates table if it doesn't exist
+    private void tableCreator()
+    {
+        var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
+
+        try(var conn = DriverManager.getConnection(url))
+        {
+            var sql = "CREATE TABLE IF NOT EXISTS PUBLIC.PLATFORM" +
+                    "(ID INT PRIMARY KEY AUTO_INCREMENT," +
+                    "USERNAME VARCHAR(255) NOT NULL," +
+                    "PASSWORD VARCHAR(255) NOT NULL" +
+                    ")";
+            try (var stmt = conn.prepareStatement(sql))
+            {
+                stmt.execute();
+                System.out.println("Table created");
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     // TODO fix it to work with database
     private boolean userCheck(String username, String password)
     {
+        tableCreator();
+        adminInsert();
+
         var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
 
         try(var conn = DriverManager.getConnection(url))
