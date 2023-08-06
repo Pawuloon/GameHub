@@ -2,6 +2,7 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.DriverManager;
 
 public class Login extends JFrame
 {
@@ -41,8 +42,12 @@ public class Login extends JFrame
 
         // Add buttons to frame
         add(button, BorderLayout.NORTH);
+
+        // TODO Change it into something else
         add(new JTextArea("PLACEHOLDER"), BorderLayout.CENTER);
         add(button2, BorderLayout.SOUTH);
     }
+
+
 
 }

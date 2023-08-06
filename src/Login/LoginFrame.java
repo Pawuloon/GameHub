@@ -2,6 +2,8 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.DriverManager;
+
 import Hub.Hub;
 
 public class LoginFrame extends JFrame
@@ -19,12 +21,13 @@ public class LoginFrame extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
-        var field1 = new JTextField("Username");
-        var field2 = new JTextField("Password");
+        var field1 = new JTextField("");
+        var field2 = new JTextField("");
 
         var button = new JButton("Login");
+
         // Change into Db stuff
-        button.setEnabled(field1.getText().equals("Username") && field2.getText().equals("Password"));
+        button.setEnabled(userCheck(field1.getText(), field2.getText()));
         button.addActionListener(e ->
         {
             JOptionPane.showMessageDialog(null, "Login successful !!!!");
@@ -37,5 +40,36 @@ public class LoginFrame extends JFrame
         add(field2, BorderLayout.CENTER);
         add(button, BorderLayout.SOUTH);
 
+    }
+
+
+
+    private boolean userCheck(String username, String password)
+    {
+        var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
+
+        try(var conn = DriverManager.getConnection(url))
+        {
+
+            var sql = "SELECT * FROM PLATFORM WHERE USERNAME = ? AND PASSWORD = ?";
+            try (var stmt = conn.prepareStatement(sql))
+            {
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+                try (var rs = stmt.executeQuery())
+                {
+                    if (rs.next()) {
+                        var user = rs.getString("USERNAME");
+                        var pass = rs.getString("PASSWORD");
+                        return user.equals(username) && pass.equals(password);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+           e.printStackTrace();
+        }
+        return false;
     }
 }
