@@ -1,5 +1,7 @@
 package Login;
 
+import DataCoder.Coder;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedWriter;
@@ -22,8 +24,8 @@ public class RegisterFrame extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
-        var field1 = new JTextField("Username");
-        var field2 = new JTextField("Password");
+        var field1 = new JTextField("");
+        var field2 = new JTextField("");
 
 
         var button = new JButton("Register");
@@ -83,7 +85,9 @@ public class RegisterFrame extends JFrame
         var path = "src\\TxtFIles\\UsersData.txt";
         try(var writer = new BufferedWriter(new FileWriter(path)))
         {
-            writer.write(username + " " + password + '\n');
+            var data = Coder.encrypt(username,password);
+            assert data != null;
+            writer.write(data + '\n');
         }
         catch (Exception e)
         {

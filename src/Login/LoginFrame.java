@@ -5,7 +5,9 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.DriverManager;
+import java.util.Objects;
 
+import DataCoder.Coder;
 import Hub.Hub;
 
 public class LoginFrame extends JFrame
@@ -144,7 +146,9 @@ public class LoginFrame extends JFrame
             while ((line = reader.readLine()) != null)
             {
                 var data = line.split(" ");
-                if (data[0].equals(username) && data[1].equals(password))
+
+                var fin = Objects.requireNonNull(Coder.decrypt(data[0], data[1])).split(" ");
+                if (fin[0].equals(username) && fin[1].equals(password))
                 {
                     return true;
                 }
