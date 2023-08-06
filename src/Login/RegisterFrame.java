@@ -27,12 +27,20 @@ public class RegisterFrame extends JFrame
         // Change into Db stuff
         button.addActionListener(e ->
         {
-            // TODO Finnish db register
+
         });
 
         // Add buttons to frame
         add(field1, BorderLayout.NORTH);
         add(field2, BorderLayout.CENTER);
         add(button, BorderLayout.SOUTH);
+    }
+
+
+
+    // Inserting user into database and file
+    private void registerUser(String username, String password)
+    {
+
     }
 }
