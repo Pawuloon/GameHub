@@ -10,7 +10,7 @@ import Hub.Hub;
 
 public class LoginFrame extends JFrame
 {
-    // TODO Finnish login frame
+    // TODO improve graphical representation
     public LoginFrame()
     {
         setPreferredSize(new Dimension(800, 600));
@@ -80,6 +80,7 @@ public class LoginFrame extends JFrame
             e.printStackTrace();
         }
     }
+
     // Creates table if it doesn't exist
     protected static void tableCreator()
     {

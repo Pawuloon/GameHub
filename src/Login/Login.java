@@ -2,11 +2,9 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.DriverManager;
 
 public class Login extends JFrame
 {
-    // TODO Finnish login and implement database
     public Login()
     {
         setPreferredSize(new Dimension(800, 600));
