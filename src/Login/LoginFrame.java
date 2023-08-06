@@ -55,7 +55,7 @@ public class LoginFrame extends JFrame
         return button;
     }
 
-
+    // TODO fix it to work with database
     private boolean userCheck(String username, String password)
     {
         var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
