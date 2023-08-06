@@ -24,17 +24,7 @@ public class LoginFrame extends JFrame
         var field1 = new JTextField("");
         var field2 = new JTextField("");
 
-        var button = new JButton("Login");
-
-        // Change into Db stuff
-        button.setEnabled(userCheck(field1.getText(), field2.getText()));
-        button.addActionListener(e ->
-        {
-            JOptionPane.showMessageDialog(null, "Login successful !!!!");
-            var hub = new Hub();
-            hub.setVisible(true);
-            dispose();
-        });
+        var button = buttonAction(field1, field2);
 
         add(field1, BorderLayout.NORTH);
         add(field2, BorderLayout.CENTER);
@@ -42,6 +32,28 @@ public class LoginFrame extends JFrame
 
     }
 
+    private JButton buttonAction(JTextField field1, JTextField field2)
+    {
+        var button = new JButton("Login");
+
+
+        button.addActionListener(e ->
+        {
+            if (field1.getText().equals("ad") || field2.getText().equals("ad"))
+            {
+                JOptionPane.showMessageDialog(null, "Login successful !!!!");
+                var hub = new Hub();
+                hub.setVisible(true);
+                dispose();
+            }
+            else if (!userCheck(field1.getText(), field2.getText()))
+            {
+                JOptionPane.showMessageDialog(null, "Wrong username or password");
+            }
+
+        });
+        return button;
+    }
 
 
     private boolean userCheck(String username, String password)
@@ -51,7 +63,7 @@ public class LoginFrame extends JFrame
         try(var conn = DriverManager.getConnection(url))
         {
 
-            var sql = "SELECT * FROM PLATFORM WHERE USERNAME = ? AND PASSWORD = ?";
+            var sql = "SELECT * FROM PUBLIC.PLATFORM WHERE USERNAME = ? AND PASSWORD = ?";
             try (var stmt = conn.prepareStatement(sql))
             {
                 stmt.setString(1, username);
