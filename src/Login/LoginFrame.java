@@ -2,6 +2,8 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.DriverManager;
 
 import Hub.Hub;
@@ -58,7 +60,7 @@ public class LoginFrame extends JFrame
 
 
     // Insert admin into database
-    private void adminInsert()
+    private static void adminInsert()
     {
         var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
         tableCreator();
@@ -79,7 +81,7 @@ public class LoginFrame extends JFrame
         }
     }
     // Creates table if it doesn't exist
-    private void tableCreator()
+    protected static void tableCreator()
     {
         var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
 
@@ -101,8 +103,9 @@ public class LoginFrame extends JFrame
             e.printStackTrace();
         }
     }
-    // TODO fix it to work with database
-    private boolean userCheck(String username, String password)
+
+    // Checks if user exists in database
+    protected static boolean userCheck(String username, String password)
     {
         tableCreator();
         adminInsert();
@@ -130,6 +133,25 @@ public class LoginFrame extends JFrame
         catch (Exception e)
         {
            e.printStackTrace();
+        }
+
+        // Check by file backup
+        var path = "src\\TxtFIles\\UsersData.txt";
+        try(var reader = new BufferedReader(new FileReader(path)))
+        {
+            String line;
+            while ((line = reader.readLine()) != null)
+            {
+                var data = line.split(" ");
+                if (data[0].equals(username) && data[1].equals(password))
+                {
+                    return true;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.err.println("Error with reading from the file: " + e.getMessage());
         }
         return false;
     }

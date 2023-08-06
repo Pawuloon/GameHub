@@ -2,6 +2,10 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class RegisterFrame extends JFrame
@@ -27,7 +31,11 @@ public class RegisterFrame extends JFrame
         // Change into Db stuff
         button.addActionListener(e ->
         {
-
+            registerUser(field1.getText(), field2.getText());
+            JOptionPane.showMessageDialog(null, "User registered");
+            var frame = new LoginFrame();
+            frame.setVisible(true);
+            dispose();
         });
 
         // Add buttons to frame
@@ -41,6 +49,45 @@ public class RegisterFrame extends JFrame
     // Inserting user into database and file
     private void registerUser(String username, String password)
     {
+        LoginFrame.tableCreator();
 
+        LoginFrame.userCheck(username, password);
+        if (LoginFrame.userCheck(username, password))
+        {
+            JOptionPane.showMessageDialog(null, "User already exists");
+            return;
+        }
+
+        var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
+        var sqlCommand = "INSERT INTO PUBLIC.PLATFORM VALUES(DEFAULT,?,?)";
+
+        try(var connection = DriverManager.getConnection(url))
+        {
+            try(var prep = connection.prepareStatement(sqlCommand))
+            {
+                prep.setString(1, username);
+                prep.setString(2, password);
+                prep.executeUpdate();
+            }
+            catch (SQLException e)
+            {
+                System.err.println("Error: " + e.getMessage());
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+        // File backup
+        var path = "src\\TxtFIles\\UsersData.txt";
+        try(var writer = new BufferedWriter(new FileWriter(path)))
+        {
+            writer.write(username + " " + password + '\n');
+        }
+        catch (Exception e)
+        {
+            System.err.println("Error with writing to the file: " + e.getMessage());
+        }
     }
 }
