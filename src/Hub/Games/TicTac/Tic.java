@@ -1,4 +1,4 @@
-package TicTac;
+package Hub.Games.TicTac;
 
 import javax.swing.*;
 import java.awt.*;

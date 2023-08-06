@@ -1,11 +1,11 @@
 package Hub;
 
-import FallingBlockGame.GameFrame;
-import FlappyReversed.FlapFrame;
+import Hub.Games.FallingBlockGame.GameFrame;
+import Hub.Games.FlappyReversed.FlapFrame;
 
-import PingPong.Pong;
-import Snake.Snak;
-import TicTac.Tic;
+import Hub.Games.PingPong.Pong;
+import Hub.Games.Snake.Snak;
+import Hub.Games.TicTac.Tic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +54,7 @@ public class Hub extends JFrame
             dispose();
         });
 
-        // Snake game button
+        // Hub.Games.Snake game button
         var button3 = new JButton("Snake");
         button3.setPreferredSize(new Dimension(100, 90));
         button3.addActionListener(e ->

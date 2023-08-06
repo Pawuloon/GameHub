@@ -1,4 +1,4 @@
-package Snake;
+package Hub.Games.Snake;
 
 import javax.swing.*;
 import java.awt.*;

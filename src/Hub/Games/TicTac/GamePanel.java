@@ -1,4 +1,4 @@
-package TicTac;
+package Hub.Games.TicTac;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +55,10 @@ public class GamePanel extends JPanel
                     JOptionPane.showMessageDialog(null, "Draw");
                     System.exit(0);
                 }
-                default -> throw new IllegalStateException("Unexpected value: " + winner);
+                default ->
+                {
+                    // Do nothing
+                }
             }
         });
         timer.start();

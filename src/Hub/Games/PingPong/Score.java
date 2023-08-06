@@ -1,4 +1,4 @@
-package PingPong;
+package Hub.Games.PingPong;
 
 import javax.swing.*;
 import java.awt.*;

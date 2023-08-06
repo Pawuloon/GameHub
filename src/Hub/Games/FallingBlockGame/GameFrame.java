@@ -1,4 +1,4 @@
-package FallingBlockGame;
+package Hub.Games.FallingBlockGame;
 
 import javax.swing.*;
 import java.awt.*;

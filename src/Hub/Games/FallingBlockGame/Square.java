@@ -1,6 +1,5 @@
-package FallingBlockGame;
+package Hub.Games.FallingBlockGame;
 
-import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;

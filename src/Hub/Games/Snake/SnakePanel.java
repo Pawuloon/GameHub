@@ -1,4 +1,4 @@
-package Snake;
+package Hub.Games.Snake;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class SnakePanel extends JPanel
         graphics.setColor(randomColor());
         graphics.fillRect(Snak.getFruit().x, Snak.getFruit().y, 20, 20);
 
-        // Snake
+        // Hub.Games.Snake
         graphics.setColor(Color.RED);
         for (var point : Snak.getSnake())
              graphics.fillRect(point.x, point.y, 20, 20);

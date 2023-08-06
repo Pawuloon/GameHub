@@ -1,4 +1,4 @@
-package FlappyReversed;
+package Hub.Games.FlappyReversed;
 
 import javax.swing.*;
 import java.awt.*;
