@@ -4,6 +4,8 @@ import DataCoder.Coder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.sql.DriverManager;
@@ -25,15 +27,40 @@ public class RegisterFrame extends JFrame
         setFocusable(true);
 
 
-
-        var field1 = new JTextField("");
+        // Text fields for username and password
+        var field1 = new JTextField("Username:");
         field1.setToolTipText("Username");
+        field1.setBackground(Color.BLACK);
+        field1.setForeground(Color.WHITE);
+        field1.setFont(new Font("Arial", Font.PLAIN, 20));
+        field1.addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent evt)
+            {
+                field1.setText("");
+            }
+        });
 
-
-        var field2 = new JTextField("");
+        var field2 = new JTextField("Password:");
         field2.setToolTipText("Password");
+        field2.setBackground(Color.BLACK);
+        field2.setForeground(Color.WHITE);
+        field2.setFont(new Font("Arial", Font.PLAIN, 20));
+        field2.addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent evt)
+            {
+                field2.setText("");
+            }
+        });
+        // Fields panel
 
+        var panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 1));
+        panel.add(field1);
+        panel.add(field2);
 
+        // Button for registering
         var button = new JButton("Register");
 
         // Change into Db stuff
@@ -47,8 +74,7 @@ public class RegisterFrame extends JFrame
         });
 
         // Add buttons to frame
-        add(field1, BorderLayout.NORTH);
-        add(field2, BorderLayout.CENTER);
+        add(panel, BorderLayout.CENTER);
         add(button, BorderLayout.SOUTH);
     }
 
