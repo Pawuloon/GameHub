@@ -44,14 +44,18 @@ public class Login extends JFrame
         // Add buttons to frame
         add(button, BorderLayout.NORTH);
 
-        // TODO Change it into something else
-
-
+        // Background
         add(new LoginBackground(), BorderLayout.CENTER);
 
         add(button2, BorderLayout.SOUTH);
+        welcomeInfo();
     }
 
 
-
+    // Welcome message
+    private void welcomeInfo()
+    {
+        JOptionPane.showMessageDialog(null,
+                "Welcome to the Hub choose login or register and remember to have fun!");
+    }
 }

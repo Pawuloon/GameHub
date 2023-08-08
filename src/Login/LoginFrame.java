@@ -25,8 +25,25 @@ public class LoginFrame extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
+        // Labels for username and password
+        var label1 = new JLabel("Username:");
+        label1.setForeground(Color.WHITE);
+        label1.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        var label2 = new JLabel("Password:");
+        label2.setForeground(Color.WHITE);
+        label2.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        // Text fields for username and password
         var field1 = new JTextField("");
+        field1.setBackground(Color.BLACK);
+        field1.setForeground(Color.WHITE);
+        field1.setFont(new Font("Arial", Font.PLAIN, 20));
+
         var field2 = new JTextField("");
+        field2.setBackground(Color.BLACK);
+        field2.setForeground(Color.WHITE);
+        field2.setFont(new Font("Arial", Font.PLAIN, 20));
 
         // Buttons for login and register
         var button = buttonLogin(field1, field2);
@@ -39,15 +56,23 @@ public class LoginFrame extends JFrame
             dispose();
         });
 
-        // Add buttons to panel
+        // Combine labels and text fields
+        var labelFieldPanel = new JPanel();
+        labelFieldPanel.setBackground(Color.BLACK);
+        labelFieldPanel.setLayout(new GridLayout(4, 1));
+        labelFieldPanel.add(label1);
+        labelFieldPanel.add(field1);
+        labelFieldPanel.add(label2);
+        labelFieldPanel.add(field2);
+
+        // Buttons for the panel
         var buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 2));
         buttonPanel.add(button);
         buttonPanel.add(button2);
 
         // Add contents to frame
-        add(field1, BorderLayout.NORTH);
-        add(field2, BorderLayout.CENTER);
+        add(labelFieldPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
 
