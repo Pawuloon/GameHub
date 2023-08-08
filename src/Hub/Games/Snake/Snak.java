@@ -1,9 +1,13 @@
 package Hub.Games.Snake;
 
+import Hub.Hub;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,13 +21,15 @@ public class Snak extends JFrame
     private int direction;
     private static boolean isRunning;
 
+    private Timer timer;
+
     public Snak()
     {
         setTitle("Snake");
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
         setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setVisible(true);
         pack();
         setLocationRelativeTo(null);
@@ -86,6 +92,28 @@ public class Snak extends JFrame
             }
         });
         setFocusable(true);
+
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                timer.stop();
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
+                        , "Exit", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION)
+                {
+                    var frame = new Hub();
+                    frame.setVisible(true);
+                    dispose();
+                }
+                else if (choice == JOptionPane.NO_OPTION)
+                {
+                    timer.start();
+                }
+            }
+        });
 
     }
 
@@ -153,7 +181,7 @@ public class Snak extends JFrame
 
     private void gameLoop()
     {
-        var timer = new Timer(100, e ->
+        timer = new Timer(100, e ->
         {
             if (!isRunning)
                 return;

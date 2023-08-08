@@ -1,5 +1,7 @@
 package Hub.Games.FlappyReversed;
 
+import Hub.Hub;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,7 +21,8 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
 
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
         pack();
@@ -36,6 +39,27 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
         // Game loop
         loop = new Timer(15,this);
         loop.start();
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                loop.stop();
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
+                        , "Exit", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION)
+                {
+                    var frame = new Hub();
+                    frame.setVisible(true);
+                    dispose();
+                }
+                else if (choice == JOptionPane.NO_OPTION)
+                {
+                    loop.start();
+                }
+            }
+        });
     }
 
     // Update for game state

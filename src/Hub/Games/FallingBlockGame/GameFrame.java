@@ -2,13 +2,32 @@ package Hub.Games.FallingBlockGame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import Hub.Hub;
 
 public class GameFrame extends JFrame
 {
     public GameFrame()
     {
         super("Block Game");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
+                        , "Exit", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION)
+                {
+                    var frame = new Hub();
+                    frame.setVisible(true);
+                    dispose();
+                }
+            }
+        });
         setLayout(new BorderLayout());
 
 

@@ -2,6 +2,9 @@ package Hub.Games.TicTac;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import Hub.Hub;
 
 public class Tic extends JFrame
@@ -12,7 +15,7 @@ public class Tic extends JFrame
         setTitle("Tic Tac Toe");
         setPreferredSize(new Dimension(800, 600));
         setLayout(new BorderLayout());
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
 
 
@@ -43,6 +46,22 @@ public class Tic extends JFrame
             dispose();
         });
 
+        // Window listener
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
+                        , "Exit", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION)
+                {
+                    var frame = new Hub();
+                    frame.setVisible(true);
+                    dispose();
+                }
+            }
+        });
 
         // Adding components
         add(panel, BorderLayout.CENTER);

@@ -1,9 +1,13 @@
 package Hub.Games.PingPong;
 
+import Hub.Hub;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Pong extends JFrame implements KeyListener
 {
@@ -15,6 +19,8 @@ public class Pong extends JFrame implements KeyListener
 
     private final Score score;
 
+    private Timer timer;
+
 
     private final String endScoreSet;
     public Pong()
@@ -24,7 +30,7 @@ public class Pong extends JFrame implements KeyListener
         getContentPane().setBackground(Color.BLACK);
         setResizable(false);
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addKeyListener(this);
         pack();
         setLocationRelativeTo(null);
@@ -87,6 +93,26 @@ public class Pong extends JFrame implements KeyListener
         setFocusable(true);
 
         start();
+        addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                super.windowClosing(e);
+                timer.stop();
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?", "Exit", JOptionPane.YES_NO_OPTION);
+                if (choice == JOptionPane.YES_OPTION)
+                {
+                    var frame = new Hub();
+                    frame.setVisible(true);
+                    dispose();
+                }
+                else if (choice == JOptionPane.NO_OPTION)
+                {
+                    timer.start();
+                }
+            }
+        });
 
     }
 
@@ -122,7 +148,7 @@ public class Pong extends JFrame implements KeyListener
     private void start()
     {
         randomSpeed();
-        var timer = new Timer(10, e ->
+        timer = new Timer(10, e ->
         {
             moveBall();
             repaint();
