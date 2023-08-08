@@ -28,18 +28,34 @@ public class LoginFrame extends JFrame
         var field1 = new JTextField("");
         var field2 = new JTextField("");
 
-        var button = buttonAction(field1, field2);
+        // Buttons for login and register
+        var button = buttonLogin(field1, field2);
 
+        var button2 = new JButton("Register");
+        button2.addActionListener(e->
+        {
+            var frame = new RegisterFrame();
+            frame.setVisible(true);
+            dispose();
+        });
+
+        // Add buttons to panel
+        var buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(1, 2));
+        buttonPanel.add(button);
+        buttonPanel.add(button2);
+
+        // Add contents to frame
         add(field1, BorderLayout.NORTH);
         add(field2, BorderLayout.CENTER);
-        add(button, BorderLayout.SOUTH);
+        add(buttonPanel, BorderLayout.SOUTH);
+
 
     }
 
-    private JButton buttonAction(JTextField field1, JTextField field2)
+    private JButton buttonLogin(JTextField field1, JTextField field2)
     {
         var button = new JButton("Login");
-
 
         button.addActionListener(e ->
         {
