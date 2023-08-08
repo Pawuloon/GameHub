@@ -17,6 +17,7 @@ public class LoginFrame extends JFrame
     // TODO improve graphical representation
     public LoginFrame()
     {
+        setTitle("Login");
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,7 +69,7 @@ public class LoginFrame extends JFrame
         // Combine labels and text fields
         var labelFieldPanel = new JPanel();
         labelFieldPanel.setBackground(Color.BLACK);
-        labelFieldPanel.setLayout(new GridLayout(4, 1));
+        labelFieldPanel.setLayout(new GridLayout(2, 1));
         labelFieldPanel.add(field1);
         labelFieldPanel.add(field2);
 

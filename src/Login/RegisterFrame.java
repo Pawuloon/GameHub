@@ -17,7 +17,8 @@ public class RegisterFrame extends JFrame
     // Think about adding an email verification code to verify the use
     public RegisterFrame()
     {
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setTitle("Register");
+        setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
