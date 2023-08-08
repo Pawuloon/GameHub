@@ -2,6 +2,8 @@ package Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.DriverManager;
@@ -25,25 +27,32 @@ public class LoginFrame extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
-        // Labels for username and password
-        var label1 = new JLabel("Username:");
-        label1.setForeground(Color.WHITE);
-        label1.setFont(new Font("Arial", Font.PLAIN, 20));
-
-        var label2 = new JLabel("Password:");
-        label2.setForeground(Color.WHITE);
-        label2.setFont(new Font("Arial", Font.PLAIN, 20));
-
         // Text fields for username and password
-        var field1 = new JTextField("");
+        var field1 = new JTextField("Username:");
+        field1.setToolTipText("Username or maybe something else ?");
         field1.setBackground(Color.BLACK);
         field1.setForeground(Color.WHITE);
         field1.setFont(new Font("Arial", Font.PLAIN, 20));
+        field1.addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent evt)
+            {
+                field1.setText("");
+            }
+        });
 
-        var field2 = new JTextField("");
+        var field2 = new JTextField("Password:");
+        field2.setToolTipText("That's not a password :D");
         field2.setBackground(Color.BLACK);
         field2.setForeground(Color.WHITE);
         field2.setFont(new Font("Arial", Font.PLAIN, 20));
+        field2.addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent evt)
+            {
+                field2.setText("");
+            }
+        });
 
         // Buttons for login and register
         var button = buttonLogin(field1, field2);
@@ -60,9 +69,7 @@ public class LoginFrame extends JFrame
         var labelFieldPanel = new JPanel();
         labelFieldPanel.setBackground(Color.BLACK);
         labelFieldPanel.setLayout(new GridLayout(4, 1));
-        labelFieldPanel.add(label1);
         labelFieldPanel.add(field1);
-        labelFieldPanel.add(label2);
         labelFieldPanel.add(field2);
 
         // Buttons for the panel

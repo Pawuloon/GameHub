@@ -24,8 +24,14 @@ public class RegisterFrame extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
+
+
         var field1 = new JTextField("");
+        field1.setToolTipText("Username");
+
+
         var field2 = new JTextField("");
+        field2.setToolTipText("Password");
 
 
         var button = new JButton("Register");
