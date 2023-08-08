@@ -52,46 +52,48 @@ public class RegisterFrame extends JFrame
     private void registerUser(String username, String password)
     {
         LoginFrame.tableCreator();
-
-        LoginFrame.userCheck(username, password);
-        if (LoginFrame.userCheck(username, password))
+        if (username.isEmpty() || password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a username and password");
+        }
+        else if (LoginFrame.userCheck(username, password))
         {
             JOptionPane.showMessageDialog(null, "User already exists");
-            return;
         }
-
-        var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
-        var sqlCommand = "INSERT INTO PUBLIC.PLATFORM VALUES(DEFAULT,?,?)";
-
-        try(var connection = DriverManager.getConnection(url))
+        else
         {
-            try(var prep = connection.prepareStatement(sqlCommand))
+            var url = "jdbc:h2:D:/java/GameHub/src/DB/db";
+            var sqlCommand = "INSERT INTO PUBLIC.PLATFORM VALUES(DEFAULT,?,?)";
+            try(var connection = DriverManager.getConnection(url))
             {
-                prep.setString(1, username);
-                prep.setString(2, password);
-                prep.executeUpdate();
+                try(var prep = connection.prepareStatement(sqlCommand))
+                {
+                    prep.setString(1, username);
+                    prep.setString(2, password);
+                    prep.executeUpdate();
+                }
+                catch (SQLException e)
+                {
+                    System.err.println("Error: " + e.getMessage());
+                }
             }
             catch (SQLException e)
             {
                 System.err.println("Error: " + e.getMessage());
             }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("Error: " + e.getMessage());
+            // File backup
+            var path = "src\\TxtFIles\\UsersData.txt";
+            try(var writer = new BufferedWriter(new FileWriter(path)))
+            {
+                var data = Coder.encrypt(username,password);
+                assert data != null;
+                writer.write(data + '\n');
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error with writing to the file: " + e.getMessage());
+            }
         }
 
-        // File backup
-        var path = "src\\TxtFIles\\UsersData.txt";
-        try(var writer = new BufferedWriter(new FileWriter(path)))
-        {
-            var data = Coder.encrypt(username,password);
-            assert data != null;
-            writer.write(data + '\n');
-        }
-        catch (Exception e)
-        {
-            System.err.println("Error with writing to the file: " + e.getMessage());
-        }
     }
 }

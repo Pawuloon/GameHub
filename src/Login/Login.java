@@ -1,5 +1,7 @@
 package Login;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,6 +9,7 @@ public class Login extends JFrame
 {
     public Login()
     {
+        setTitle("Login");
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -42,7 +45,10 @@ public class Login extends JFrame
         add(button, BorderLayout.NORTH);
 
         // TODO Change it into something else
-        add(new JTextArea("PLACEHOLDER"), BorderLayout.CENTER);
+
+
+        add(new LoginBackground(), BorderLayout.CENTER);
+
         add(button2, BorderLayout.SOUTH);
     }
 

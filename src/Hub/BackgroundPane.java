@@ -20,7 +20,7 @@ public class BackgroundPane extends JPanel
                 new ImageIcon("src\\Graphics\\img_3.png").getImage()
         );
         index = 0;
-        var timer = new Timer(8000, e ->
+        var timer = new Timer(3000, e ->
         {
             index++;
             if (index == images.size())
