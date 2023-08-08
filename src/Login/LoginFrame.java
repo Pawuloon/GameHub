@@ -120,8 +120,8 @@ public class LoginFrame extends JFrame
             var sql = "INSERT INTO PUBLIC.PLATFORM(USERNAME, PASSWORD) VALUES(?, ?)";
             try (var stmt = conn.prepareStatement(sql))
             {
-                stmt.setString(1, "ad");
-                stmt.setString(2, "ad");
+                stmt.setString(1, System.getenv("adminName"));
+                stmt.setString(2, System.getenv("adminPassword"));
                 stmt.execute();
                 System.out.println("Admin inserted");
             }
