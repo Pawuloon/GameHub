@@ -30,6 +30,9 @@ public class GameFrame extends JFrame
         });
         setLayout(new BorderLayout());
 
+        // Icon
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
 
         var choice = JOptionPane.showInputDialog("Enter hardness lvl (1-4): ");
         var points = new Points();

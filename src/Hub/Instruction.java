@@ -18,6 +18,10 @@ public class Instruction extends JFrame
         pack();
         setLocationRelativeTo(null);
 
+
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
         // Instruction panel content
         var mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(800, 600));

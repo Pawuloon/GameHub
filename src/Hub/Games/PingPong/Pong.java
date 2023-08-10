@@ -35,6 +35,11 @@ public class Pong extends JFrame implements KeyListener
         pack();
         setLocationRelativeTo(null);
 
+
+        // Icon
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
         // End score
         endScoreSet = JOptionPane.showInputDialog(null, "Enter the score to win");
 

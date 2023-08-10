@@ -34,6 +34,10 @@ public class Snak extends JFrame
         pack();
         setLocationRelativeTo(null);
 
+        // Icon
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
         var panel = new SnakePanel();
 
         // Adding components

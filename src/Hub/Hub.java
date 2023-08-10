@@ -20,6 +20,10 @@ public class Hub extends JFrame
         setLayout(new BorderLayout());
         setBackground(Color.BLACK);
 
+        // Set icon
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
         // Main panel
         var panel = new JPanel();
         panel.setPreferredSize(new Dimension(100, 100));

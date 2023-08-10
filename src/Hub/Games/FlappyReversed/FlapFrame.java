@@ -30,6 +30,12 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
         setFocusable(true);
 
         addKeyListener(this);
+
+        // Icon
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
+
         // Initialization
         bird = new Bird(20, 10);
         obstacle = new Obstacle(300, 10);

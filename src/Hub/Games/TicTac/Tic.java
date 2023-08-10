@@ -18,6 +18,9 @@ public class Tic extends JFrame
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setVisible(true);
 
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
 
         // Ask for number of fields
         String ask;

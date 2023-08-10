@@ -20,6 +20,9 @@ public class Login extends JFrame
         setLocationRelativeTo(null);
         setFocusable(true);
 
+        var img = new ImageIcon("src\\Graphics\\img_6.jpg");
+        setIconImage(img.getImage());
+
         var button = new JButton("Login");
         button.setSize(100, 100);
         var button2 = new JButton("Register");
