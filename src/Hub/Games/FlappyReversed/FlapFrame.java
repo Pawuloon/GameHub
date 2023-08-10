@@ -19,6 +19,7 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
     public FlapFrame()
     {
 
+        super("Flappy Reverse Bird");
         setPreferredSize(new Dimension(800, 600));
         setVisible(true);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
