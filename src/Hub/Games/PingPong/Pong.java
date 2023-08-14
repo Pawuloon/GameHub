@@ -122,7 +122,6 @@ public class Pong extends JFrame implements KeyListener
     }
 
 
-    // TODO Fix ball collision with paddle and wall
     private void moveBall()
     {
         if (ball.isColliding(paddle1) || ball.isColliding(paddle2))
@@ -153,18 +152,54 @@ public class Pong extends JFrame implements KeyListener
     private void start()
     {
         randomSpeed();
+
+        final int[] ballX = {ball.getX()};
+        final int[] ballY = {ball.getY()};
+        final int[] ballXSpeed = {ball.getxVelocity()};
+        final int[] ballYSpeed = {ball.getyVelocity()};
+
+        var paddle1Y = paddle1.getY();
+        var paddle2Y = paddle2.getY();
+
         timer = new Timer(10, e ->
         {
             moveBall();
-            repaint();
+
+            ballX[0] += ballXSpeed[0];
+            ballY[0] += ballYSpeed[0];
+
+            // Collision with top and bottom walls
+            if (ballY[0] <= 0 || ballY[0] >= getHeight() - 30)
+            {
+                ballYSpeed[0] = -ballYSpeed[0];
+            }
+
+            // Collision with paddles
+            if ((ballX[0] <= 50 && ballX[0] >= 30) && (ballY[0] >= paddle1Y && ballY[0] <= paddle1Y + 80) ||
+                    (ballX[0] >= getWidth() - 60 && ballX[0] <= getWidth() - 40) && (ballY[0] >= paddle2Y && ballY[0] <= paddle2Y + 80))
+            {
+                ballXSpeed[0] = -ballXSpeed[0];
+            }
+
+            // Ball out of bounds
+            if (ballX[0] <= 0 || ballX[0] >= getWidth())
+            {
+                ballX[0] = 150;
+                ballY[0] = 150;
+            }
+
             if (score.getValue() == Integer.parseInt(endScoreSet) || score.getValue2() == Integer.parseInt(endScoreSet))
             {
                 var winner = score.getValue() == Integer.parseInt(endScoreSet) ? "Player 1" : "Player 2";
                 JOptionPane.showMessageDialog(null, winner + " won");
                 System.exit(0);
             }
+
+            repaint();
+
         });
         timer.start();
+
     }
 
 
