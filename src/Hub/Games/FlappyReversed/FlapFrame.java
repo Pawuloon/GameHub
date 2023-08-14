@@ -54,7 +54,7 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
                 super.windowClosing(e);
                 loop.stop();
                 var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
-                        , "Exit", JOptionPane.YES_NO_OPTION);
+                        , "Exit", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (choice == JOptionPane.YES_OPTION)
                 {
                     var frame = new Hub();
@@ -64,6 +64,10 @@ public class FlapFrame extends JFrame implements ActionListener, KeyListener
                 else if (choice == JOptionPane.NO_OPTION)
                 {
                     loop.start();
+                }
+                else if (choice == JOptionPane.CANCEL_OPTION)
+                {
+                    System.exit(0);
                 }
             }
         });

@@ -105,7 +105,7 @@ public class Snak extends JFrame
                 super.windowClosing(e);
                 timer.stop();
                 var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
-                        , "Exit", JOptionPane.YES_NO_OPTION);
+                        , "Exit", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (choice == JOptionPane.YES_OPTION)
                 {
                     var frame = new Hub();
@@ -115,6 +115,10 @@ public class Snak extends JFrame
                 else if (choice == JOptionPane.NO_OPTION)
                 {
                     timer.start();
+                }
+                else if (choice == JOptionPane.CANCEL_OPTION)
+                {
+                    System.exit(0);
                 }
             }
         });

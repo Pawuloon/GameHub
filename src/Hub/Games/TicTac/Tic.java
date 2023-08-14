@@ -56,12 +56,16 @@ public class Tic extends JFrame
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?"
-                        , "Exit", JOptionPane.YES_NO_OPTION);
+                        , "Exit", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (choice == JOptionPane.YES_OPTION)
                 {
                     var frame = new Hub();
                     frame.setVisible(true);
                     dispose();
+                }
+                else if (choice == JOptionPane.CANCEL_OPTION)
+                {
+                    System.exit(0);
                 }
             }
         });

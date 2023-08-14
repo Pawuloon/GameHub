@@ -25,6 +25,8 @@ public class Pong extends JFrame implements KeyListener
     private final String endScoreSet;
     public Pong()
     {
+        playersQuestion();
+
         setTitle("Pong");
         setPreferredSize(new Dimension(800, 600));
         getContentPane().setBackground(Color.BLACK);
@@ -105,7 +107,7 @@ public class Pong extends JFrame implements KeyListener
             {
                 super.windowClosing(e);
                 timer.stop();
-                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?", "Exit", JOptionPane.YES_NO_OPTION);
+                var choice = JOptionPane.showConfirmDialog(null, "Do you want to go back to hub ?", "Exit", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (choice == JOptionPane.YES_OPTION)
                 {
                     var frame = new Hub();
@@ -116,12 +118,16 @@ public class Pong extends JFrame implements KeyListener
                 {
                     timer.start();
                 }
+                else if (choice == JOptionPane.CANCEL_OPTION)
+                {
+                    System.exit(0);
+                }
             }
         });
 
     }
 
-
+    // Move ball function
     private void moveBall()
     {
         if (ball.isColliding(paddle1) || ball.isColliding(paddle2))
@@ -149,6 +155,8 @@ public class Pong extends JFrame implements KeyListener
         ball.setLocation(ball.getX() + ball.getxVelocity(), ball.getY() + ball.getyVelocity());
 
     }
+
+    // Start function for game loop
     private void start()
     {
         randomSpeed();
@@ -203,6 +211,7 @@ public class Pong extends JFrame implements KeyListener
     }
 
 
+    // Random speed for ball
     public void randomSpeed()
     {
         var x = ball.getX();
@@ -261,5 +270,20 @@ public class Pong extends JFrame implements KeyListener
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    // Players question
+    private void playersQuestion()
+    {
+        var choice = JOptionPane.showConfirmDialog(null,
+                "Do you want to play with a friend(YES) or AI(NO) ?", "Players", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION)
+        {
+            JOptionPane.showMessageDialog(null, "You chose to play with a friend");
+        }
+        else if (choice == JOptionPane.NO_OPTION)
+        {
+            JOptionPane.showMessageDialog(null, "You chose to play with AI");
+        }
     }
 }

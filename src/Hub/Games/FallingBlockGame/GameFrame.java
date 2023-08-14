@@ -26,6 +26,10 @@ public class GameFrame extends JFrame
                     frame.setVisible(true);
                     dispose();
                 }
+                else if (choice == JOptionPane.CANCEL_OPTION)
+                {
+                    dispose();
+                }
             }
         });
         setLayout(new BorderLayout());
