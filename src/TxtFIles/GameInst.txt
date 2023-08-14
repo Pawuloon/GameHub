@@ -1,3 +1,13 @@
+     --IMPORTANT--
+
+         Hub
+    If you press button X which indicates exit
+    on the right up corner of the window you
+    will be prompted to choose yes or no option and cancel as well
+    if you choose yes you will exit the game and return to the main menu
+    if you choose no you will return to the game
+    if you choose cancel you will close the whole window and exit the gameHub
+
 A) Tic Tac Toe
     Select number of fields 3x3, 4x4, 5x5 etc.
     Decide between yourself who will be X and who will be O.
